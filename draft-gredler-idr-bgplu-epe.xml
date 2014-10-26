@@ -34,7 +34,49 @@
       </address>
     </author>
 
-    <date day="27" month="October" year="2014"/>
+    <author fullname="Kaliraj Vairavakkalai" initials="K." surname="Vairavakkalai">
+      <organization>Juniper Networks, Inc.</organization>
+      <address>
+	<postal>
+	  <street>1194 N. Mathilda Ave.</street>
+	  <city>Sunnyvale</city>
+	  <region>CA</region>
+	  <code>94089</code>
+	  <country>US</country>
+	</postal>
+	<email>kaliraj@juniper.net</email>
+      </address>
+    </author>
+
+    <author fullname="Chandrasekar R" initials="Chandrasekar" surname="R">
+      <organization>Juniper Networks, Inc.</organization>
+      <address>
+	<postal>
+	  <street>Electra, Exora Business Park Marathahalli - Sarjapur Outer Ring Road</street>
+	  <city>Bangalore</city>
+	  <region>KA</region>
+	  <code>560103</code>
+	  <country>India</country>
+	</postal>
+	<email>csekar@juniper.net</email>
+      </address>
+    </author>
+
+    <author fullname="Balaji Rajagopalan" initials="B." surname="Rajagopalan">
+      <organization>Juniper Networks, Inc.</organization>
+      <address>
+	<postal>
+	  <street>Electra, Exora Business Park Marathahalli - Sarjapur Outer Ring Road</street>
+	  <city>Bangalore</city>
+	  <region>KA</region>
+	  <code>560103</code>
+	  <country>India</country>
+	</postal>
+	<email>balajir@juniper.net</email>
+      </address>
+    </author>
+
+    <date day="26" month="October" year="2014"/>
 
     <area>Routing</area>
 
