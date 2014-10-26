@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="std" docName="draft-gredler-idr-bgplu-epe-00"
+<rfc category="info" docName="draft-gredler-idr-bgplu-epe-00"
      ipr="trust200902">
 
   <!-- ***** FRONT MATTER ***** -->
@@ -156,10 +156,19 @@
 
     <section title="Motivation, Rationale and Applicability">
       <t>
-	Use exisiting Protocols.
+	BGP-LU is often just seen as a 'stitching' protocol for
+	connecting Autonomous Systems. BGP-LU is often not visible
+	as a viable protocol for solving the Interdomain
+	traffic-engineering problem.
+      </t>
+      <t>
+	With this document the authors want to clarify the use
+	of BGP-LU for traffic-engineering purposes and encourage
+	both implementers and network operator to use a widely deployed and
+	operationally well understood protocol,
+	rather than inventing and deploying new protocols.
       </t>
     </section>
-
 
     <section title="Sample Topology">
       <t>
@@ -320,10 +329,6 @@
 	  
 	</list>
 	</t>
-
-	<section title="link-grouping">
-	</section>
-
       </section>
     </section> <!-- end 'Egress Link Advertisement' -->
 
