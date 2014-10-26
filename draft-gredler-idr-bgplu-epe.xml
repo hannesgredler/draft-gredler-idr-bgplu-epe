@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="4"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes" ?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes" ?>
+<?rfc subcompact="no" ?>
+<rfc category="std" docName="draft-gredler-idr-bgplu-epe-00"
+     ipr="trust200902">
+
+  <!-- ***** FRONT MATTER ***** -->
+
+  <front>
+    <title>Egress Peer Engineering using BGP-LU</title>
+
+    <!-- add 'role="editor"' below for the editors if appropriate -->
+
+    <author fullname="Hannes Gredler" initials="H." surname="Gredler" role="editor">
+      <organization>Juniper Networks, Inc.</organization>
+      <address>
+	<postal>
+	  <street>1194 N. Mathilda Ave.</street>
+	  <city>Sunnyvale</city>
+	  <region>CA</region>
+	  <code>94089</code>
+	  <country>US</country>
+	</postal>
+	<email>hannes@juniper.net</email>
+      </address>
+    </author>
+
+    <date day="27" month="October" year="2014"/>
+
+    <area>Routing</area>
+
+    <workgroup>Inter-Domain Routing</workgroup>
+
+    <keyword>MPLS</keyword>
+    <keyword>BGP</keyword>
+    <keyword>Label advertisement</keyword>
+    <keyword>Egress Peer Engineering</keyword>
+    <keyword>Traffic Engineering</keyword>
+
+    <abstract>
+      <t>
+	The MPLS source routing paradigm provides path control
+	for both intra- and inter- Autonomous System (AS) traffic.
+	For Intra-AS path control, protocols like
+	RSVP-TE <xref target="RFC3209"/> and
+	CR-LDP <xref target="RFC3212"/> are utilized.
+	This documents outlines how MPLS routers
+	may use the BGP labeled unicast protocol (BGP-LU)
+	<xref target="RFC3107"/>
+	for doing traffic-engineering on inter-AS links.
+      </t>
+    </abstract>
+
+    <note title="Requirements Language">
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+      document are to be interpreted as described in <xref
+      target="RFC2119">RFC 2119</xref>.</t>
+    </note>
+  </front>
+
+  <middle>
+    <section title="Introduction">
+      <t>
+	Today BGP-LU is used both as an intra-AS [seamless-mpls] and inter-AS
+	routing protocol. BGP-LU may advertise a MPLS transport path between
+	IGP regions and Autononmous Systems. Those paths may span one or more
+	router hops. This document describes advertisement and use of
+	one-hop MPLS label-switched paths (LSP) for traffic-engineering
+	the links between Authonomous Systems.
+      </t>
+
+      <t>
+	Consider Figure <xref target="SINGLE_HOP_LSP"/>:
+	an ASBR router (R2) advertises a labeled
+	host route for the remote-end IP address of its link (IP3).
+
+	The BGP nexthop gets set to R2s loopback IP address. For the
+	advertised Label &lt;N&gt; a forwarding action of 'POP and forward' to
+	nexthop (IP3) is installed in R2's MPLS forwarding table.
+
+	Now consider if R2 had several links and R2 would advertise
+	labels for all of its inter-AS links.
+	By pushing the corresponding MPLS label &lt;N&gt; on the label-stack
+	an ingress router R1 may control the egress peer selection.
+      </t>
+
+
+      <figure anchor="SINGLE_HOP_LSP" title="single-hop LSPs">
+        <artwork>
+          AS1           :        AS2
+                        :
++----+   iBGP   +----+  :  eBGP   +----+
+| R1 |----------| R2 |-IP2----IP3-| R3 |
++----+          +----+  :         +----+
+                        :
+   -----------traffic-flow----------&gt;
+   &lt;------------route-flow-----------
+        </artwork>
+      </figure>
+
+    </section>
+
+    <section title="Motivation, Rationale and Applicability">
+      <t>
+	Use exisiting Protocols.
+      </t>
+    </section>
+
+
+    <section title="Sample Topology">
+      <t>
+	The following <xref target="sample-topology">topology</xref> and IP addresses shall be used throughout
+	the Label advertisement examples.
+      </t>
+
+      <figure anchor="sample-topology" title="Sample Topology">
+        <artwork>
+
+                      AS1                           :    AS 2
+                                                    :
+                       :                            :
+           Level 1     :     Level 2                :
+                       :                            :
+                       :                            :
++-----+             +-----+-IP3--1-IP4--+-----+     :
+| R1  +-IP1--1-IP2--+ R2  |             | R3  |     :
++--+--+             +--+--+-IP5--3-IP6--+--+--+-IP15-IP16- 
+   |                   |                   |        :     \
+  IP9                 IP7                IP13       :      \
+   |                   |                   |        :    +--+--+
+   1                   1                   1        :    |  R7 |
+   |                   |                   |        :    +--+--+
+ IP10                 IP8                IP14       :      /
+   |                   |                   |        :     /
++--+--+             +--+--+             +--+--+-IP17-IP18- 
+|  R4 +-IP19-2-IP20-+ R5  |-IP11-2-IP12-| R6  |     :
++-----+             +-----+             +-----+     :
+                       :                            :
+                       :                            :
+                       :                            :
+	</artwork>
+      </figure>
+
+      <section title="Transport IP addresses and Router-IDs">
+	<t><list style="symbols">
+	  <t>R1: 192.168.1.1</t>
+	  <t>R2: 192.168.1.2</t>
+	  <t>R3: 192.168.1.3</t>
+	  <t>R4: 192.168.1.4</t>
+	  <t>R5: 192.168.1.5</t>
+	  <t>R6: 192.168.1.6</t>
+	  <t>R7: 192.168.1.7</t>
+	</list></t>	
+      </section>
+      
+      <section title="Link IP addresses">
+	<t><list style="symbols">
+	  <t>R1 to R2 link: 10.0.0.1, 10.0.0.2</t>
+	  <t>R1 to R4 link: 10.0.0.9, 10.0.0.10</t>
+	  <t>R2 to R3 link #1: 10.0.0.3, 10.0.0.4</t>
+	  <t>R2 to R3 link #2: 10.0.0.5, 10.0.0.6</t>
+	  <t>R2 to R5 link: 10.0.0.7, 10.0.0.8</t>
+	  <t>R3 to R6 link: 10.0.0.13, 10.0.0.14</t>
+	  <t>R3 to R7 link: 10.0.0.15, 10.0.0.16</t>
+	  <t>R4 to R5 link: 10.0.0.19, 10.0.0.20</t>
+	  <t>R5 to R6 link: 10.0.0.11, 10.0.0.12</t>
+	  <t>R6 to R7 link: 10.0.0.17, 10.0.0.18</t>
+	</list></t>	
+	
+	<t>
+	  The IGP link metrics are displayed in the middle of the link.
+	  All of them are assumed to be bi-directional.
+	</t>
+      </section>
+      
+    </section>
+    
+    <section title="Egress Link Advertisement">
+      <section title="Single-hop eBGP">
+      </section>
+
+      <section title="multi-hop eBGP">
+
+	<section title="link-grouping">
+	</section>
+
+      </section>
+    </section> <!-- end 'Egress Link Advertisement' -->
+
+    <section title="Egress Link Protection">
+
+      <section title="FRR backup routes">
+	<section title="Local links"></section>
+	<section title="Remote BGP-LU labels"></section>
+	<section title="Local forwarding tables"></section>
+      </section>
+
+      <section title="Failure detection">
+
+	<section title="link-specific OAM">
+	</section>
+
+	<section title="BFD">
+	</section>
+
+	<section title="BGP session liveness state">
+	</section>
+
+      </section>
+
+    </section> <!-- end 'Egress Link Protection' -->
+
+    
+    <section title="Reporting link-utilization">
+    </section>
+
+    <section anchor="Acknowledgements" title="Acknowledgements">
+      <t>Many thanks to Yakov Rekhter for his detailed review and
+      insightful comments</t>
+    </section>
+
+    <section anchor="IANA" title="IANA Considerations">
+      <t>
+	This documents does not request any action from IANA.
+      </t>
+    </section>
+
+    <section anchor="Security" title="Security Considerations">
+      <t>This document does not introduce any change in terms of BGP security.</t>
+    </section>
+  </middle>
+
+  <!--  *****BACK MATTER ***** -->
+
+  <back>
+
+    <references title="Normative References">
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"?>
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3107.xml"?>
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3209.xml"?>
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3212.xml"?>
+    </references>
+
+  </back>
+</rfc>
