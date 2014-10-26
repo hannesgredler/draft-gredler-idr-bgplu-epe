@@ -357,20 +357,38 @@
 	  <t>
 	    Assuming that the remaining link #2 between ASBR{1,3}
 	    has enough capacity, and link-protection is sufficient,
-	    this link may serve as temporary backup.
+	    this link MAY serve as temporary backup.
 	  </t>
 
 	  <t>
 	    However if node-protection or additional capacity is
 	    desired, then the local link between ASBR{1,4} or ASBR{1,5}
-	    may be used as temporary backup.
+	    MAY be used as temporary backup.
 	  </t>
 	</section>
 
 	<section title="Remote BGP-LU labels">
+	  <t>ASBR1 is both originator and receiver of
+	  BGP routing information. For this protection
+	  method it is required that the ASBRs support the
+	  <xref target="I-D.ietf-idr-best-external"/>
+	  behaviour.
+
+	  ASBR1 receives both the BGP-LU and BGP service routes from
+	  ASBR2 and therefore can use the ASBR2 advertised label
+	  as a backup path given that ASBR1 has a tunnel towards
+	  ASBR2.
+	  </t>
 	</section>
 
-	<section title="Local forwarding tables">
+	<section title="Local IP forwarding tables">
+	  <t>
+	    For protecting plain unicast (Internet) routing
+	    information a very simple backup scheme
+	    could be to recurse to the relevant IP forwarding
+	    table and do an IP lookup to further determine
+	    a new egress link.	    
+	  </t>
 	</section>
       </section>
 
@@ -423,6 +441,7 @@
     <references title="Informative References">
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-mpls-seamless-mpls-07.xml"?>
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-idr-add-paths-10.xml"?>
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-idr-best-external-05.xml"?>
     </references>
 
   </back>
