@@ -113,7 +113,9 @@
   <middle>
     <section title="Introduction">
       <t>
-	Today BGP-LU is used both as an intra-AS [seamless-mpls] and inter-AS
+	Today BGP-LU <xref target="RFC3107"/>
+	is used both as an intra-AS <xref
+        target="I-D.ietf-mpls-seamless-mpls"></xref> and inter-AS
 	routing protocol. BGP-LU may advertise a MPLS transport path between
 	IGP regions and Autononmous Systems. Those paths may span one or more
 	router hops. This document describes advertisement and use of
@@ -176,11 +178,11 @@
 | R1  +-------------+ASBR1|      :                        |ASBR6|
 +--+--+             +--+--+-IP5--:-IP6--+-----+-----------+-----+
    |                   |   \     :      |ASBR4|     :    /
-   |                   |    \           +-----+         /
+   |                   |    \    :      +-----+     :   /
    |                   |     IP7-                    ---
-   |                   |         \     .........    /
+   |                   |         \ ................ /
    |                   |          IP8-           ---
-   |                   |              \         /
+   |                   |         :    \         /   :
    |                   |         :     \       /    :
 +--+--+             +--+--+      :      +--+--+     :
 | R2  +-------------+ASBR2|-IP9--:-IP10-|ASBR5|     :
@@ -191,7 +193,7 @@
 	</artwork>
       </figure>
 
-      <section title="Transport IP addresses and Router-IDs">
+      <section title="Loopback IP addresses and Router-IDs">
 	<t><list style="symbols">
 	  <t>R1: 192.168.1.1</t>
 	  <t>R2: 192.168.1.2</t>
@@ -207,17 +209,19 @@
       <section title="Link IP addresses">
 	<t><list style="symbols">
 	  <t>ASBR1 to ASBR3 link #1: 10.0.0.1, 10.0.0.2</t>
-	  <t>ASBR1 to ASBR3 link #2: 10.0.0.3, 10.0.0.3</t>
+	  <t>ASBR1 to ASBR3 link #2: 10.0.0.3, 10.0.0.4</t>
 	  <t>ASBR1 to ASBR4 link: 10.0.0.5, 10.0.0.6</t>
 	  <t>ASBR1 to ASBR5 link: 10.0.0.7, 10.0.0.8</t>
 	  <t>ASBR2 to ASBR5 link: 10.0.0.9, 10.0.0.10</t>
-	</list></t>	
-	
-      </section>
-      
+	</list></t>		
+      </section>      
     </section>
     
     <section title="Egress Link Advertisement">
+      <t>In link
+
+      </t>
+
       <section title="Single-hop eBGP">
       </section>
 
@@ -282,6 +286,11 @@
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3209.xml"?>
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3212.xml"?>
     </references>
+
+    <references title="Informative References">
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-mpls-seamless-mpls-07.xml"?>
+    </references>
+
 
   </back>
 </rfc>
