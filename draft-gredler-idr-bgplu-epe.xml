@@ -163,11 +163,12 @@
 
     <section title="Sample Topology">
       <t>
-	The following <xref target="sample-topology">topology</xref> and IP addresses shall be used throughout
-	the Label advertisement examples.
+	The following <xref target="SAMPLE_TOPOLOGY">topology</xref>
+	and IP addresses shall be used throughout
+	the Egress Peering Engineering advertisement examples.
       </t>
 
-      <figure anchor="sample-topology" title="Sample Topology">
+      <figure anchor="SAMPLE_TOPOLOGY" title="Sample Topology">
         <artwork>
                                  :                  :    
            AS 1                  :        AS 2      :     AS 4
@@ -218,11 +219,49 @@
     </section>
     
     <section title="Egress Link Advertisement">
-      <t>In link
-
+      <t>An ASBR assigns for each of its egress links facing a BGP
+      peer, a distinct label and advertises it to its internal BGP mesh.
+      The ASBR programs a forwarding action 'POP and forward'
+      into the MPLS forwarding table.
+      Note that the neighboring AS is not required
+      to support exchanging NRLIs using BGP-LU.
+      It is the local ASBR (ASBR{1,2})
+      which generates the BGP-LU routes. The forwarding nexthop
+      for those routes points to the link-IP adresses of the remote ASBRs (ASBR{3,4,5}).
+      Note that the generated BGP-LU routes always match the BGP nexthop that the
+      remote ASBRs set their BGP service routes to, such that the
+      software component doing route-resolution understands
+      the association between the BGP service route and the
+      BGP-LU forwarding route.
       </t>
 
       <section title="Single-hop eBGP">
+	<t>In <xref target="SAMPLE_TOPOLOGY"/> the ASBR{1,5}
+	and ASBR{2,5} links are examples for single-hop eBGP advertisements.
+	</t>
+	<t>
+        <list style="symbols">
+	  <t>ASBR5 advertises a BGP service (SAFI-1) route {172.16/12}
+	  to ASBR1 with a BGP next-hop of 10.0.0.8. ASBR1
+	  readvertises this BGP service route towards its iBGP mesh
+	  (R{1,2}) it does not overwrite the BGP-nexthop,
+	  but rather leave it unchanged. 
+	  </t>
+	  <t>ASBR1 advertises a BGP-LU route {10.0.0.8/32, label 100} with a BGP
+	  next hop of 192.168.1.11.
+	  </t>
+
+	  <t>ASBR5 advertises a BGP service (SAFI-1) route {172.16/12}
+	  to ASBR2 with a BGP next-hop of 10.0.0.10. ASBR2
+	  readvertises this BGP service route towards its iBGP mesh
+	  (R{1,2}) it does not overwrite the BGP-nexthop,
+	  but rather leave it unchanged. 
+	  </t>
+	  <t>ASBR2 advertises BGP-LU route {10.0.0.10/32, label 101} with a BGP
+	  next hop of 192.168.1.12.
+	  </t>
+	</list>
+	</t>
       </section>
 
       <section title="multi-hop eBGP">
