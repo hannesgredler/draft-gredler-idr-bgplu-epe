@@ -333,11 +333,45 @@
     </section> <!-- end 'Egress Link Advertisement' -->
 
     <section title="Egress Link Protection">
+      <t> It is desirable to provide a local-repair based
+      protection scheme, in case a redundant path
+      is available to reach a peer AS. Protection
+      may be applied at multiple levels in the routing stack.
+      Since the ASBR has insight in both BGP-LU and BGP service
+      advertisements, protection can be provided at the BGP-LU,
+      at the BGP service or both levels.
+      </t>
 
       <section title="FRR backup routes">
-	<section title="Local links"></section>
-	<section title="Remote BGP-LU labels"></section>
-	<section title="Local forwarding tables"></section>
+	<t>
+	  Assume the network operator wants to provide
+	  a local-repair nexthop for the 172.16/12 BGP
+	  service route at ASBR1. The active route
+	  resolve over the parallel links towards ASBR3.
+	  In case the link #1 between ASBR{1,3} fails
+	  there are now several candidate backup paths providing
+	  protection against link or node failure.
+	</t>
+
+	<section title="Local links">
+	  <t>
+	    Assuming that the remaining link #2 between ASBR{1,3}
+	    has enough capacity, and link-protection is sufficient,
+	    this link may serve as temporary backup.
+	  </t>
+
+	  <t>
+	    However if node-protection or additional capacity is
+	    desired, then the local link between ASBR{1,4} or ASBR{1,5}
+	    may be used as temporary backup.
+	  </t>
+	</section>
+
+	<section title="Remote BGP-LU labels">
+	</section>
+
+	<section title="Local forwarding tables">
+	</section>
       </section>
 
       <section title="Failure detection">
