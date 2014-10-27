@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-gredler-idr-bgplu-epe-00"
+<rfc category="info" docName="draft-gredler-idr-bgplu-epe-01"
      ipr="trust200902">
 
   <!-- ***** FRONT MATTER ***** -->
@@ -91,7 +91,7 @@
     </author>
 
 
-    <date day="26" month="October" year="2014"/>
+    <date day="27" month="October" year="2014"/>
 
     <area>Routing</area>
 
@@ -167,6 +167,14 @@
         </artwork>
       </figure>
 
+      <t>
+	Of course, since R1 and R2 may not be directly connected to
+	each other, if the interior routers within AS1 do not maintain
+	routes to external destinations, carrying traffic to such destinations
+	would require a tunnel from R1 to R2. Such tunnel could be realized
+	as either a MPLS Label Switch Path (LSP), or by GRE.
+      </t>
+
     </section>
 
     <section title="Motivation, Rationale and Applicability">
@@ -178,10 +186,11 @@
       </t>
       <t>
 	With this document the authors want to clarify the use
-	of BGP-LU for traffic-engineering purposes and encourage
+	of BGP-LU for Egress Peering traffic-engineering purposes and encourage
 	both implementers and network operator to use a widely deployed and
 	operationally well understood protocol,
-	rather than inventing and deploying new protocols.
+	rather than inventing new protocols or new extensions
+	to the existing protocols.
       </t>
     </section>
 
@@ -243,14 +252,14 @@
     </section>
     
     <section title="Egress Link Advertisement">
-      <t>An ASBR assigns for each of its egress links facing a BGP
+      <t>An ASBR assigns for each of its egress links facing an eBGP
       peer, a distinct label and advertises it to its internal BGP mesh.
       The ASBR programs a forwarding action 'POP and forward'
       into the MPLS forwarding table.
       Note that the neighboring AS is not required
-      to support exchanging NRLIs using BGP-LU.
+      to support exchanging NLRIs with the local AS using BGP-LU.
       It is the local ASBR (ASBR{1,2})
-      which generates the BGP-LU routes. The forwarding next-hop
+      which generates the BGP-LU routes into its iBGP mesh. The forwarding next-hop
       for those routes points to the link-IP addresses of the remote ASBRs (ASBR{3,4,5}).
       Note that the generated BGP-LU routes always match the BGP next-hop that the
       remote ASBRs set their BGP service routes to, such that the
@@ -274,7 +283,7 @@
 	    but rather leave it unchanged. 
 	    </t>
 	    <t>ASBR1 advertises a BGP-LU route {10.0.0.8/32, label 100}
-	    over a single-hop eBGP session with a BGP next hop of 192.168.1.11.
+	    with a BGP next hop of 192.168.1.11.
 	    ASBR1 programs a MPLS forwarding state of 'POP and forward'
 	    to 10.0.0.8 for the advertised label 100.
 	    </t>
@@ -291,6 +300,14 @@
 	    ASBR2 programs a MPLS forwarding state of 'POP and forward'
 	    to 10.0.0.10 for the advertised label 101.
 	    </t>
+	    <t>Note that in order for ASBR1 to advertise towards
+	    its | iBGP mesh multiple next hops (10.0.0.8, 10.0.0.10)
+	    for the route to 172.16/12, ASBR1 and R{1,2}
+	    have to support the
+	    BGP Add-paths extension.
+	    <xref target="I-D.ietf-idr-add-paths"/>.
+	    </t>
+
 	  </list>
 	</t>
       </section>
@@ -323,10 +340,15 @@
 	  to ASBR1 with a BGP next-hop of 192.168.1.13. ASBR1
 	  re-advertises this BGP service route towards its iBGP mesh
 	  (R{1,2}) it does not overwrite the BGP next-hop,
-	  but rather leave it unchanged. 
+	  but rather leave it unchanged. Note that
+	  the iBGP routers SHOULD support the BGP Add-paths
+	  extensions <xref target="I-D.ietf-idr-add-paths"/>.
+	  such that ASBR can re-advertise all paths to the
+	  SAFI-1 route {172.16/12}.
 	  </t>
 
-	  <t>For link #1, ASBR1 advertises a BGP-LU route {192.168.1.13/32, label 102}
+	  <t>For link #1, ASBR1 advertises into its iBGP mesh
+	  a BGP-LU route {192.168.1.13/32, label 102}
 	  with a BGP next hop of 192.168.1.11. To differentiate
 	  this from the link #2 route-advertisement (which contains the same FEC)
 	  it is setting the path-ID to 1.
@@ -334,7 +356,8 @@
 	  to 10.0.0.2 for the advertised label 102.
 	  </t>
 
-	  <t>For link #2, ASBR1 advertises a BGP-LU route {192.168.1.13/32, label 103}
+	  <t>For link #2, ASBR1 advertises into its iBGP mesh
+	  a BGP-LU route {192.168.1.13/32, label 103}
 	  with a BGP next hop of 192.168.1.11. To differentiate
 	  this from the link #1 route-advertisement (which contains the same FEC)
 	  it is setting the path-ID to 2.
@@ -447,11 +470,16 @@
       by the data-plane via the link-bandwidth
       community in their BGP-LU update message.
       </t>
-      <t>It is crucial that ingress routers
+
+      <t>
+      It is crucial that ingress routers
       learn quickly about congestion of an egress link and hence
-      it is desired to get high frequency updates of the
-      advertised per-link BGP-LU labels.
+      it is desired to get timely updates of the advertised
+      per-link BGP-LU routes carrying the available
+      bandwidth information when the available bandwidth crosses a
+      certain (preconfigured) threshold.
       </t>
+
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
