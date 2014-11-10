@@ -316,10 +316,16 @@
 	<t>
 	  Todays operational practice for load-sharing across
 	  parallel links is to configure a single multi-hop eBGP
-	  session between a pair of routers.
+	  session between a pair of routers. The IP adresses for the
+	  Multi-hop eBGP session are typically sourced from the loopback IP
+	  interfaces. Note that those IP adresses do not share an
+	  IP subnet. Most often those loopback IP addresses are most
+	  specific host routes.
 	  Since the BGP next-hops of the received BGP service routes
-	  are typically not on a common IP subnet, the operator
-	  configures a static route with next-hops pointing
+	  are typically rewritten to the remote routers loopback IP
+	  address they cannot get immediatly resolved by the receiving
+	  router. To overcome this,
+          the operator configures a static route with next-hops pointing
 	  to each of the remote-IP addresses of the
 	  underlying links.
 	</t>
@@ -483,8 +489,9 @@
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
-      <t>Many thanks to Yakov Rekhter and Chris Bowers for their
-      detailed review and insightful comments.</t>
+      <t>Many thanks to Yakov Rekhter, Chris Bowers and Jeffrey
+      (Zhaohui) Zhang
+      for their detailed review and insightful comments.</t>
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
