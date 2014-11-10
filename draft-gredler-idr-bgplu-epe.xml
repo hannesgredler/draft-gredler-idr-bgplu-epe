@@ -248,6 +248,34 @@
 	</list></t>		
       </section>      
     </section>
+
+    <section title="Service Route Advertisement">
+      <t>In <xref target="SELECTIVE_IBGP_NH_REWRITE"/> a simple
+      network layout is shown. There are two classes of BGP speakers:
+
+      <list style="numbers">
+	<t>ingress routers</t>
+	<t>controllers</t>
+      </list>	
+      </t>
+
+      <t> Ingress routers receive BGP-LU routes from the ASBRs. Each
+      BGP-LU route corresponds to an egress link. Furthermore Ingress
+      routers receive their service routes using the BGP protocol.
+      The BGP Add-paths extension <xref target="I-D.ietf-idr-add-paths"/>
+      ensures that multiple paths to a given service route may get advertised.
+      </t>
+      
+      <t>Controllers receive BGP-LU routes from the ASBRs as well.
+      However the service routes may be received either using the
+      BGP protocol plus the BGP Add-paths extension
+      <xref target="I-D.ietf-idr-add-paths"/> or alternatively
+      The BGP Monitoring protocol <xref target="I-D.ietf-grow-bmp"/> (BMP).
+      BMP has got support for advertising the RIB-In of a BGP router. 
+      As such it might be a suitable protocol for feeding all potential
+      egress paths of a service-route from a ASBR into a controller.
+      </t>
+    </section>
     
     <section title="Egress Link Advertisement">
       <t>An ASBR assigns for each of its egress links facing an eBGP
@@ -581,6 +609,7 @@
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-idr-add-paths-10.xml"?>
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-idr-best-external-05.xml"?>
       <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-idr-link-bandwidth-06.xml"?>
+      <?rfc include="http://xml2rfc.tools.ietf.org/public/rfc/bibxml3/reference.I-D.draft-ietf-grow-bmp-07.xml"?>
     </references>
 
   </back>
