@@ -180,7 +180,7 @@
     <section title="Motivation, Rationale and Applicability">
       <t>
 	BGP-LU is often just seen as a 'stitching' protocol for
-	connecting Autonomous Systems. BGP-LU is often not visible
+	connecting Autonomous Systems. BGP-LU is often not viewed
 	as a viable protocol for solving the Inter-domain
 	traffic-engineering problem.
       </t>
@@ -277,7 +277,7 @@
 	  <list style="symbols">
 	    <t>ASBR5 advertises a BGP service (SAFI-1)
 	    route {172.16/12}
-	    to ASBR1 with a BGP next-hop of 10.0.0.8. ASBR1
+	    to ASBR1 with a BGP next-hop of 10.0.0.8. When ASBR1
 	    re-advertises this BGP service route towards its iBGP mesh
 	    (R{1,2}) it does not overwrite the BGP next-hop,
 	    but rather leave it unchanged. 
@@ -290,7 +290,7 @@
 
 	    <t>ASBR5 advertises a BGP service (SAFI-1)
 	    route {172.16/12}
-	    to ASBR2 with a BGP next-hop of 10.0.0.10. ASBR2
+	    to ASBR2 with a BGP next-hop of 10.0.0.10. When ASBR2
 	    re-advertises this BGP service route towards its iBGP mesh
 	    (R{1,2}) it does not overwrite the BGP next-hop,
 	    but rather leave it unchanged. 
@@ -301,7 +301,7 @@
 	    to 10.0.0.10 for the advertised label 101.
 	    </t>
 	    <t>Note that in order for ASBR1 to advertise towards
-	    its | iBGP mesh multiple next hops (10.0.0.8, 10.0.0.10)
+	    its iBGP mesh multiple next hops (10.0.0.8, 10.0.0.10)
 	    for the route to 172.16/12, ASBR1 and R{1,2}
 	    have to support the
 	    BGP Add-paths extension.
@@ -337,7 +337,7 @@
 	<list style="symbols">
 	  <t>ASBR3 advertises a BGP service (SAFI-1)
 	  route {172.16/12} over multi-hop eBGP
-	  to ASBR1 with a BGP next-hop of 192.168.1.13. ASBR1
+	  to ASBR1 with a BGP next-hop of 192.168.1.13. When ASBR1
 	  re-advertises this BGP service route towards its iBGP mesh
 	  (R{1,2}) it does not overwrite the BGP next-hop,
 	  but rather leave it unchanged. Note that
@@ -371,7 +371,7 @@
 
       <section title="Grouping of Peers">
 	<t>
-	  In addition to offer a distinct BGP-LU label for each egress
+	  In addition to offering a distinct BGP-LU label for each egress
 	  link, an ASBR MAY want to advertise a BGP-LU label which represents
 	  a load-balancing forwarding action across all links going
 	  to a particular Peer.
@@ -396,7 +396,7 @@
       protection scheme, in case a redundant path
       is available to reach a peer AS. Protection
       may be applied at multiple levels in the routing stack.
-      Since the ASBR has insight in both BGP-LU and BGP service
+      Since the ASBR has insight into both BGP-LU and BGP service
       advertisements, protection can be provided at the BGP-LU,
       at the BGP service or both levels.
       </t>
@@ -406,7 +406,7 @@
 	  Assume the network operator wants to provide
 	  a local-repair next-hop for the 172.16/12 BGP
 	  service route at ASBR1. The active route
-	  resolve over the parallel links towards ASBR3.
+	  resolves over the parallel links towards ASBR3.
 	  In case the link #1 between ASBR{1,3} fails
 	  there are now several candidate backup paths providing
 	  protection against link or node failure.
@@ -483,8 +483,8 @@
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
-      <t>Many thanks to Yakov Rekhter for his detailed review and
-      insightful comments</t>
+      <t>Many thanks to Yakov Rekhter and Chris Bowers for their
+      detailed review and insightful comments.</t>
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
