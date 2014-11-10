@@ -111,7 +111,6 @@
 	RSVP-TE and CR-LDP are utilized.
 	This documents outlines how MPLS routers
 	may use the BGP labeled unicast protocol (BGP-LU)
-	<xref target="RFC3107"/>
 	for doing traffic-engineering on inter-AS links.
       </t>
     </abstract>
