@@ -266,6 +266,70 @@
       BGP-LU forwarding route.
       </t>
 
+      <section title="iBGP meshing and BGP nexthop rewrite policy">
+	<t>Throughout this document we describe how the BGP next-hop
+	of both BGP Service Routes and BGP-LU routes
+	shall be rewritten. This may clash with exisiting network deployments
+	and exisiting network configurations guidelines which e.g.
+	may mandate to rewrite the BGP next-hop when an BGP update
+	enters an AS.
+	</t>
+
+	<t>The Egress peering usecase assumes a central controller
+	like it is shown <xref target="SELECTIVE_IBGP_NH_REWRITE"/>.
+	In order to support both existing BGP nexthop guidelines
+	and the suggestion described in theis document and
+	implementation SHOULD support several internal BGP
+	peer-groups:
+
+        <list style="numbers">
+	  <t>iBGP peer group for ingress routers</t>
+	  <t>iBGP peer group for controllers</t>
+	</list>
+	</t>
+
+	<t>The first peergroup MAY be left unchanged
+	and use any exisiting BGP nexthop rewrite policy.
+	The second peergroup MUST use the BGP rewrite policy
+	described in this document for both service and BGP-LU routes.
+	</t>
+
+	<t>
+	Of course a common iBGP peer group and a common rewrite policy
+	may be used as the proposed policy is compatible with
+	existing routing software implementations of BGP next-hop
+	route resolution.
+	</t>
+
+	<t>		
+      <figure anchor="SELECTIVE_IBGP_NH_REWRITE"
+              title="Selective iBGP NH rewrite">
+        <artwork>
++-----------+
+| ingress   |
+|  router   |
++-----------+
+     ^
+     |
++-----------+
+|    BGP    |               +------------+
+|   route   |-------------->| Controller |
+| reflector |               +------------+
++-----------+                     ^
+     ^   ^                        |
+     |   |                        |
+     |   +-------------------+    |
+     |                       |    |
+     v                       v    v
++-----------+             +-----------+
+|    BGP    |             |    BGP    |
+|   ASBR1   |    . . .    |   ASBR2   |
++-----------+             +-----------+
+        </artwork>
+      </figure>
+	</t>
+      </section>
+
       <section title="Single-hop eBGP">
 	<t>In <xref target="SAMPLE_TOPOLOGY"/> the ASBR{1,5}
 	and ASBR{2,5} links are examples for single-hop eBGP
