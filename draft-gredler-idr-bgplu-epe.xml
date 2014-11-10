@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-gredler-idr-bgplu-epe-01"
+<rfc category="info" docName="draft-gredler-idr-bgplu-epe-02"
      ipr="trust200902">
 
   <!-- ***** FRONT MATTER ***** -->
@@ -91,7 +91,7 @@
     </author>
 
 
-    <date day="27" month="October" year="2014"/>
+    <date day="10" month="November" year="2014"/>
 
     <area>Routing</area>
 
