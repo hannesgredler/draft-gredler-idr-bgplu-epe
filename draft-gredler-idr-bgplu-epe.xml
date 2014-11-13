@@ -390,11 +390,16 @@
 	    ASBR2 programs a MPLS forwarding state of 'POP and forward'
 	    to 10.0.0.10 for the advertised label 101.
 	    </t>
-	    <t>Note that in order for ASBR1 to advertise towards
-	    its iBGP mesh multiple next hops (10.0.0.8, 10.0.0.10)
-	    for the route to 172.16/12, ASBR1 and R{1,2}
-	    have to support the
-	    BGP Add-paths extension.
+
+	    <t>In general, ASBR1 may receive advertisements for the
+	    route to 172.16/12 from ASBR3 and ASBR4, as well as
+	    from ASBR5.  One of these other advertisements may be
+	    chosen as the best path by the BGP decision process.
+	    In order to allow ASBR1 to re-advertise the route to
+	    172.16/12 received from ASBR5 with next-hop 10.0.0.8,
+	    independent of the other advertisements received,
+	    ASBR1 and R{1,2} need to support the BGP add-paths
+	    extension.
 	    <xref target="I-D.ietf-idr-add-paths"/>.
 	    </t>
 
