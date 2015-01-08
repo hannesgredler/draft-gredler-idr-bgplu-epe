@@ -229,24 +229,24 @@
 
       <section title="Loopback IP addresses and Router-IDs">
 	<t><list style="symbols">
-	  <t>R1: 192.168.1.1</t>
-	  <t>R2: 192.168.1.2</t>
-	  <t>ASBR1: 192.168.1.11</t>
-	  <t>ASBR2: 192.168.1.12</t>
-	  <t>ASBR3: 192.168.1.13</t>
-	  <t>ASBR4: 192.168.1.14</t>
-	  <t>ASBR5: 192.168.1.15</t>
-	  <t>ASBR6: 192.168.1.16</t>
+          <t>R1: 192.168.1.1/32</t>
+          <t>R2: 192.168.1.2/32</t>
+          <t>ASBR1: 192.168.1.11/32</t>
+          <t>ASBR2: 192.168.1.12/32</t>
+          <t>ASBR3: 192.168.1.13/32</t>
+          <t>ASBR4: 192.168.1.14/32</t>
+          <t>ASBR5: 192.168.1.15/32</t>
+          <t>ASBR6: 192.168.1.16/32</t>
 	</list></t>	
       </section>
       
       <section title="Link IP addresses">
 	<t><list style="symbols">
-	  <t>ASBR1 to ASBR3 link #1: 10.0.0.2, 10.0.0.3</t>
-	  <t>ASBR1 to ASBR3 link #2: 10.0.0.4, 10.0.0.5</t>
-	  <t>ASBR1 to ASBR4 link: 10.0.0.6, 10.0.0.7</t>
-	  <t>ASBR1 to ASBR5 link: 10.0.0.8, 10.0.0.9</t>
-	  <t>ASBR2 to ASBR5 link: 10.0.0.10, 10.0.0.11</t>
+          <t>ASBR1 (10.0.0.2/31) to ASBR3 (10.0.0.3/31) link #1</t>
+          <t>ASBR1 (10.0.0.4/31) to ASBR3 (10.0.0.5/31) link #2</t>
+          <t>ASBR1 (10.0.0.6/31) to ASBR4 (10.0.0.7/31)</t>
+          <t>ASBR1 (10.0.0.8/31) to ASBR5 (10.0.0.9/31)</t>
+          <t>ASBR2 (10.0.0.10/31) to ASBR5 (10.0.0.11/31)</t>
 	</list></t>		
       </section>      
     </section>
