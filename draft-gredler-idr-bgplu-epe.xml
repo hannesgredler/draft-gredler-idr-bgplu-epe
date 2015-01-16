@@ -506,8 +506,12 @@
 	<t>
 	  In addition to offering a distinct BGP-LU label for each egress
 	  link, an ASBR MAY want to advertise a BGP-LU label which represents
-	  a load-balancing forwarding action across all links going
-	  to a particular Peer.
+	  a load-balancing forwarding action across a set of peers.
+	  The difference is here that the ingress node gives up
+	  individual link control, but rather delegates the
+	  load-balancing decision to a particular egress router which
+	  has the freedom to send the traffic down to any link
+	  in the Peer Set as identified by the BGP-LU label.
 	</t>
 
 	<t>
