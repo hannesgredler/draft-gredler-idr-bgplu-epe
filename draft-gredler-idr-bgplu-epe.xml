@@ -120,8 +120,7 @@
       <t>
 	The MPLS source routing paradigm provides path control
 	for both intra- and inter- Autonomous System (AS) traffic.
-	For Intra-AS path control, protocols like
-	RSVP-TE and CR-LDP are utilized.
+	RSVP-TE is utilized for intra-AS path control.
 	This documents outlines how MPLS routers
 	may use the BGP labeled unicast protocol (BGP-LU)
         for doing traffic-engineering on inter-AS links as outlined in
