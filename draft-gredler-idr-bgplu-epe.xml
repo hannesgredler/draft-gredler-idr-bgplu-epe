@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-gredler-idr-bgplu-epe-02"
+<rfc category="info" docName="draft-gredler-idr-bgplu-epe-03"
      ipr="trust200902">
 
   <!-- ***** FRONT MATTER ***** -->
@@ -20,7 +20,7 @@
 
     <!-- add 'role="editor"' below for the editors if appropriate -->
 
-    <author fullname="Hannes Gredler" initials="H" surname="Gredler" role="editor">
+    <author fullname="Hannes Gredler" initials="H." surname="Gredler" role="editor">
       <organization>Juniper Networks, Inc.</organization>
       <address>
 	<postal>
@@ -34,7 +34,7 @@
       </address>
     </author>
 
-    <author fullname="Kaliraj Vairavakkalai" initials="K" surname="Vairavakkalai">
+    <author fullname="Kaliraj Vairavakkalai" initials="K." surname="Vairavakkalai">
       <organization>Juniper Networks, Inc.</organization>
       <address>
 	<postal>
@@ -48,7 +48,7 @@
       </address>
     </author>
 
-    <author fullname="Chandra Ramachandran" initials="C" surname="Ramachandran">
+    <author fullname="Chandra Ramachandran" initials="C." surname="Ramachandran">
       <organization>Juniper Networks, Inc.</organization>
       <address>
 	<postal>
@@ -62,7 +62,7 @@
       </address>
     </author>
 
-    <author fullname="Balaji Rajagopalan" initials="B" surname="Rajagopalan">
+    <author fullname="Balaji Rajagopalan" initials="B." surname="Rajagopalan">
       <organization>Juniper Networks, Inc.</organization>
       <address>
 	<postal>
@@ -76,7 +76,7 @@
       </address>
     </author>
 
-    <author fullname="Luyuan Fang" initials="L" surname="Fang">
+    <author fullname="Luyuan Fang" initials="L." surname="Fang">
       <organization>Microsoft</organization>
       <address>
 	<postal>
@@ -90,7 +90,7 @@
       </address>
     </author>
 
-    <author fullname="Ebben Aries" initials="E" surname="Aries">
+    <author fullname="Ebben Aries" initials="E." surname="Aries">
       <organization>Facebook</organization>
       <address>
 	<postal>
@@ -104,7 +104,7 @@
       </address>
     </author>
 
-    <date day="17" month="January" year="2015"/>
+    <date year="2015"/>
 
     <area>Routing</area>
 
@@ -123,9 +123,7 @@
 	RSVP-TE is utilized for intra-AS path control.
 	This documents outlines how MPLS routers
 	may use the BGP labeled unicast protocol (BGP-LU)
-        for doing traffic-engineering on inter-AS links as outlined in
-        <xref target="I-D.filsfils-spring-segment-routing-central-epe">
-        </xref>.
+        for doing traffic-engineering on inter-AS links.
       </t>
     </abstract>
 
@@ -241,24 +239,24 @@
 
       <section title="Loopback IP addresses and Router-IDs">
 	<t><list style="symbols">
-          <t>R1: 192.168.1.1/32</t>
-          <t>R2: 192.168.1.2/32</t>
-          <t>ASBR1: 192.168.1.11/32</t>
-          <t>ASBR2: 192.168.1.12/32</t>
-          <t>ASBR3: 192.168.1.13/32</t>
-          <t>ASBR4: 192.168.1.14/32</t>
-          <t>ASBR5: 192.168.1.15/32</t>
-          <t>ASBR6: 192.168.1.16/32</t>
+          <t>R1: 192.0.2.1/32</t>
+          <t>R2: 192.0.2.2/32</t>
+          <t>ASBR1: 192.0.2.11/32</t>
+          <t>ASBR2: 192.0.2.12/32</t>
+          <t>ASBR3: 192.0.2.13/32</t>
+          <t>ASBR4: 192.0.2.14/32</t>
+          <t>ASBR5: 192.0.2.15/32</t>
+          <t>ASBR6: 192.0.2.16/32</t>
 	</list></t>	
       </section>
       
       <section title="Link IP addresses">
 	<t><list style="symbols">
-          <t>ASBR1 (10.0.0.2/31) to ASBR3 (10.0.0.3/31) link #1</t>
-          <t>ASBR1 (10.0.0.4/31) to ASBR3 (10.0.0.5/31) link #2</t>
-          <t>ASBR1 (10.0.0.6/31) to ASBR4 (10.0.0.7/31)</t>
-          <t>ASBR1 (10.0.0.8/31) to ASBR5 (10.0.0.9/31)</t>
-          <t>ASBR2 (10.0.0.10/31) to ASBR5 (10.0.0.11/31)</t>
+          <t>ASBR1 (203.0.113.2/31) to ASBR3 (203.0.113.3/31) link #1</t>
+          <t>ASBR1 (203.0.113.4/31) to ASBR3 (203.0.113.5/31) link #2</t>
+          <t>ASBR1 (203.0.113.6/31) to ASBR4 (203.0.113.7/31)</t>
+          <t>ASBR1 (203.0.113.8/31) to ASBR5 (203.0.113.9/31)</t>
+          <t>ASBR2 (203.0.113.10/31) to ASBR5 (203.0.113.11/31)</t>
 	</list></t>		
       </section>      
     </section>
@@ -280,7 +278,9 @@
       ensures that multiple paths to a given service route may get advertised.
       </t>
       
-      <t>Controllers receive BGP-LU routes from the ASBRs as well.
+      <t>As outlined in <xref
+      target="I-D.filsfils-spring-segment-routing-central-epe"></xref>,
+      Controllers receive BGP-LU routes from the ASBRs as well.
       However the service routes may be received either using the
       BGP protocol plus the BGP Add-paths extension
       <xref target="I-D.ietf-idr-add-paths"/> or alternatively
@@ -381,35 +381,35 @@
 	  <list style="symbols">
 	    <t>ASBR5 advertises a BGP service (SAFI-1)
 	    route {172.16/12}
-	    to ASBR1 with a BGP next-hop of 10.0.0.9. When ASBR1
+	    to ASBR1 with a BGP next-hop of 203.0.113.9. When ASBR1
 	    re-advertises this BGP service route towards its iBGP mesh
 	    (R{1,2}) it does not overwrite the BGP next-hop,
 	    but rather leave it unchanged. 
 	    </t>
-	    <t>ASBR1 advertises a BGP-LU route {10.0.0.9/32, label 100}
-	    with a BGP next hop of 192.168.1.11.
+	    <t>ASBR1 advertises a BGP-LU route {203.0.113.9/32, label 100}
+	    with a BGP next hop of 192.0.2.11.
 	    ASBR1 programs a MPLS forwarding state of 'POP and forward'
-	    to 10.0.0.9 for the advertised label 100.
+	    to 203.0.113.9 for the advertised label 100.
 	    </t>
 
 	    <t>ASBR5 advertises a BGP service (SAFI-1)
 	    route {172.16/12}
-	    to ASBR2 with a BGP next-hop of 10.0.0.11. When ASBR2
+	    to ASBR2 with a BGP next-hop of 203.0.113.11. When ASBR2
 	    re-advertises this BGP service route towards its iBGP mesh
 	    (R{1,2}) it does not overwrite the BGP next-hop,
 	    but rather leave it unchanged. 
 	    </t>
-	    <t>ASBR2 advertises BGP-LU route {10.0.0.11/32, label 101}
-	    with a BGP next hop of 192.168.1.12.
+	    <t>ASBR2 advertises BGP-LU route {203.0.113.11/32, label 101}
+	    with a BGP next hop of 192.0.2.12.
 	    ASBR2 programs a MPLS forwarding state of 'POP and forward'
-	    to 10.0.0.11 for the advertised label 101.
+	    to 203.0.113.11 for the advertised label 101.
 	    </t>
 
             <t>Should the operator already be redistributing egress links
             into the network for purposes of BGP next-hop resolution,
-            the BGP-LU route {10.0.0.9/32, label 100} will now take
+            the BGP-LU route {203.0.113.9/32, label 100} will now take
             precedence due to LPM over the previous redistributed prefix
-            {10.0.0.8/31}. If the BGP next-hop prefix {10.0.0.9/32} were
+            {203.0.113.8/31}. If the BGP next-hop prefix {203.0.113.9/32} were
             to be redistributed as-is, then standard protocol best-path
             and preference selection mechanisms will be exhausted in
             order to select the best-path.
@@ -420,7 +420,7 @@
 	    from ASBR5.  One of these other advertisements may be
 	    chosen as the best path by the BGP decision process.
 	    In order to allow ASBR1 to re-advertise the route to
-	    172.16/12 received from ASBR5 with next-hop 10.0.0.9,
+	    172.16/12 received from ASBR5 with next-hop 203.0.113.9,
 	    independent of the other advertisements received,
 	    ASBR1 and R{1,2} need to support the BGP add-paths
 	    extension.
@@ -462,7 +462,7 @@
 	<list style="symbols">
 	  <t>ASBR3 advertises a BGP service (SAFI-1)
 	  route {172.16/12} over multi-hop eBGP
-	  to ASBR1 with a BGP next-hop of 192.168.1.13. When ASBR1
+	  to ASBR1 with a BGP next-hop of 192.0.2.13. When ASBR1
 	  re-advertises this BGP service route towards its iBGP mesh
 	  (R{1,2}) it does not overwrite the BGP next-hop,
 	  but rather leave it unchanged. Note that
@@ -473,25 +473,25 @@
 	  </t>
 
 	  <t>For link #1, ASBR1 advertises into its iBGP mesh
-	  a BGP-LU route {192.168.1.13/32, label 102}
-	  with a BGP next hop of 192.168.1.11. To differentiate
+	  a BGP-LU route {192.0.2.13/32, label 102}
+	  with a BGP next hop of 192.0.2.11. To differentiate
 	  this from the link #2 route-advertisement (which contains the same FEC)
 	  it is setting the path-ID to 1.
 	  ASBR1 programs a MPLS forwarding state of 'POP and forward'
-	  to 10.0.0.3 for the advertised label 102.
+	  to 203.0.113.3 for the advertised label 102.
 	  </t>
 
 	  <t>For link #2, ASBR1 advertises into its iBGP mesh
-	  a BGP-LU route {192.168.1.13/32, label 103}
-	  with a BGP next hop of 192.168.1.11. To differentiate
+	  a BGP-LU route {192.0.2.13/32, label 103}
+	  with a BGP next hop of 192.0.2.11. To differentiate
 	  this from the link #1 route-advertisement (which contains the same FEC)
 	  it is setting the path-ID to 2.
 	  ASBR1 programs a MPLS forwarding state of 'POP and forward'
-	  to 10.0.0.5 for the advertised label 103.
+	  to 203.0.113.5 for the advertised label 103.
 	  </t>
 
           <t>Should the operator already be redistributing static routes
-          into the network, the BGP next-hop {192.168.1.13} may
+          into the network, the BGP next-hop {192.0.2.13} may
           already be resolvable. It is then that standard protocol
           best-path and preference selection mechanisms will be
           exhausted in order to select the best-path.
@@ -521,8 +521,8 @@
 	    <t>
 	      For the two ASBR{1,3} links in <xref target="SAMPLE_TOPOLOGY"/>,
 	      belonging to Peer Set 1,
-	      ASBR1 advertises a single BGP-LU route {192.168.1.13/32, label 104}
-	      with a BGP next hop of 192.168.1.11. To differentiate
+	      ASBR1 advertises a single BGP-LU route {192.0.2.13/32, label 104}
+	      with a BGP next hop of 192.0.2.11. To differentiate
 	      this from the ASBR{1,3} single link route-advertisements
 	      (which contains the same FEC) it is setting the path-ID to 3
 	      and attaching a Peer-Set Community 'Peer Set 1'. 
@@ -530,8 +530,8 @@
 
 	    <t>
 	      For the ASBR{1,4} link in <xref target="SAMPLE_TOPOLOGY"/>,
-	      ASBR1 advertises a BGP-LU route {10.0.0.7/32, label 104}
-	      with a BGP next hop of 192.168.1.11. To differentiate
+	      ASBR1 advertises a BGP-LU route {203.0.113.7/32, label 104}
+	      with a BGP next hop of 192.0.2.11. To differentiate
 	      this from the ASBR{1,4} single link route-advertisements
 	      (which contains the same FEC) it is setting the path-ID to 2
 	      and attaching a Peer-Set Community 'Peer Set 1'. 
@@ -539,8 +539,8 @@
 
 	    <t>
 	      For the ASBR{1,5} link in <xref target="SAMPLE_TOPOLOGY"/>,
-	      ASBR1 advertises a BGP-LU route {10.0.0.9/32, label 104}
-	      with a BGP next hop of 192.168.1.11. To differentiate
+	      ASBR1 advertises a BGP-LU route {203.0.113.9/32, label 104}
+	      with a BGP next hop of 192.0.2.11. To differentiate
 	      this from the ASBR{1,5} single link route-advertisements
 	      (which contains the same FEC) it is setting the path-ID to 2
 	      and attaching a Peer-Set Community 'Peer Set 1'. 
@@ -549,7 +549,7 @@
 	  </list>
 
 	  Finally ASBR1 programs a MPLS forwarding state of 'POP and
-	  load-balance' to {10.0.0.3, 10.0.0.5, 10.0.0.7, 10.0.0.9}
+	  load-balance' to {203.0.113.3, 203.0.113.5, 203.0.113.7, 203.0.113.9}
 	  for the advertised label 104.
 	</t>
      </section>
