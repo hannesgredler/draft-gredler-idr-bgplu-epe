@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-gredler-idr-bgplu-epe-05"
+<rfc category="info" docName="draft-gredler-idr-bgplu-epe-06"
      ipr="trust200902">
 
   <!-- ***** FRONT MATTER ***** -->
@@ -69,6 +69,19 @@
       </address>
     </author>
 
+    <author fullname="Ebben Aries" initials="E." surname="Aries">
+      <organization>Juniper Networks, Inc.</organization>
+      <address>
+	<postal>
+	  <street>1194 N. Mathilda Ave.</street>
+	  <city>Sunnyvale</city>
+	  <region>CA</region>
+	  <code>94089</code>
+	  <country>US</country>
+	</postal>
+	<email>earies@juniper.net</email>
+      </address>
+
     <author fullname="Luyuan Fang" initials="L." surname="Fang">
       <organization>Microsoft</organization>
       <address>
@@ -83,21 +96,7 @@
       </address>
     </author>
 
-    <author fullname="Ebben Aries" initials="E." surname="Aries">
-      <organization>Facebook</organization>
-      <address>
-	<postal>
-	  <street>1601 Willow Road</street>
-	  <city>Menlo Park</city>
-	  <region>CA</region>
-	  <code>94025</code>
-	  <country>US</country>
-	</postal>
-	<email>exa@fb.com</email>
-      </address>
-    </author>
-
-    <date day="11" month="March" year="2016"/>
+    <date day="10" month="June" year="2016"/>
 
     <area>Routing</area>
 
@@ -650,6 +649,10 @@
       <t>Many thanks to Yakov Rekhter, Chris Bowers and Jeffrey
       (Zhaohui) Zhang
       for their detailed review and insightful comments.</t>
+      <t>Special thanks to Richard Steenbergen and Tom Scholl
+      who brought up the original idea of using MPLS for BGP
+	based egress load-balancing at their inspiring talk at Nanog 48.
+      </t>
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
