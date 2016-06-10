@@ -21,9 +21,9 @@
     <!-- add 'role="editor"' below for the editors if appropriate -->
 
     <author fullname="Hannes Gredler" initials="H." surname="Gredler" role="editor">
-      <organization>Private Contributor</organization>
+      <organization>RtBrick Inc.</organization>
       <address>
-	<email>hannes@gredler.at</email>
+	<email>hannes@rtbrick.com</email>
       </address>
     </author>
 
@@ -81,6 +81,7 @@
 	</postal>
 	<email>earies@juniper.net</email>
       </address>
+    </author>
 
     <author fullname="Luyuan Fang" initials="L." surname="Fang">
       <organization>Microsoft</organization>
