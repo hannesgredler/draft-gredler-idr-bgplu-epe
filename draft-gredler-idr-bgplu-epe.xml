@@ -10,7 +10,7 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-gredler-idr-bgplu-epe-07"
+<rfc category="info" docName="draft-gredler-idr-bgplu-epe-08"
      ipr="trust200902">
 
   <!-- ***** FRONT MATTER ***** -->
@@ -97,7 +97,7 @@
       </address>
     </author>
 
-    <date day="6" month="December" year="2016"/>
+    <date day="13" month="March" year="2017"/>
 
     <area>Routing</area>
 
@@ -243,7 +243,7 @@
           <t>ASBR6: 192.0.2.16/32</t>
 	</list></t>
       </section>
-      
+
       <section title="Link IP addresses">
 	<t><list style="symbols">
           <t>ASBR1 (203.0.113.2/31) to ASBR3 (203.0.113.3/31) link #1</t>
@@ -251,8 +251,8 @@
           <t>ASBR1 (203.0.113.6/31) to ASBR4 (203.0.113.7/31)</t>
           <t>ASBR1 (203.0.113.8/31) to ASBR5 (203.0.113.9/31)</t>
           <t>ASBR2 (203.0.113.10/31) to ASBR5 (203.0.113.11/31)</t>
-	</list></t>		
-      </section>      
+	</list></t>
+      </section>
     </section>
 
     <section title="Service Route Advertisement">
@@ -262,7 +262,7 @@
       <list style="numbers">
 	<t>Ingress Routers</t>
 	<t>Controllers</t>
-      </list>	
+      </list>
       </t>
 
       <t> Ingress routers receive BGP-LU routes from the ASBRs. Each
@@ -271,7 +271,7 @@
       The BGP Add-paths extension <xref target="I-D.ietf-idr-add-paths"/>
       ensures that multiple paths to a given service route may get advertised.
       </t>
-      
+
       <t>As outlined in <xref
       target="I-D.filsfils-spring-segment-routing-central-epe"></xref>,
       Controllers receive BGP-LU routes from the ASBRs as well.
@@ -284,7 +284,7 @@
       egress paths of a service-route from a ASBR into a controller.
       </t>
     </section>
-    
+
     <section title="Egress Next-hop Advertisement">
       <t>
         An ASBR assigns a distinct label for each of its next-hops
@@ -336,7 +336,7 @@
 	route resolution.
 	</t>
 
-	<t>		
+	<t>
       <figure anchor="SELECTIVE_IBGP_NH_REWRITE"
               title="Selective iBGP NH rewrite">
         <artwork>
@@ -489,7 +489,7 @@
           best-path and preference selection mechanisms will be
           exhausted in order to select the best-path.
           </t>
-	  
+
 	</list>
 	</t>
       </section>
@@ -518,7 +518,7 @@
 	      with a BGP next hop of 192.0.2.11. To differentiate
 	      this from the ASBR{1,3} single link route-advertisements
 	      (which contains the same FEC) it is setting the path-ID to 3
-	      and attaching a Peer-Set Community 'Peer Set 1'. 
+	      and attaching a Peer-Set Community 'Peer Set 1'.
 	    </t>
 
 	    <t>
@@ -527,7 +527,7 @@
 	      with a BGP next hop of 192.0.2.11. To differentiate
 	      this from the ASBR{1,4} single link route-advertisements
 	      (which contains the same FEC) it is setting the path-ID to 2
-	      and attaching a Peer-Set Community 'Peer Set 1'. 
+	      and attaching a Peer-Set Community 'Peer Set 1'.
 	    </t>
 
 	    <t>
@@ -536,7 +536,7 @@
 	      with a BGP next hop of 192.0.2.11. To differentiate
 	      this from the ASBR{1,5} single link route-advertisements
 	      (which contains the same FEC) it is setting the path-ID to 2
-	      and attaching a Peer-Set Community 'Peer Set 1'. 
+	      and attaching a Peer-Set Community 'Peer Set 1'.
 	    </t>
 
 	  </list>
@@ -545,6 +545,38 @@
 	  load-balance' to {203.0.113.3, 203.0.113.5, 203.0.113.7, 203.0.113.9}
 	  for the advertised label 104.
 	</t>
+     </section>
+
+     <section title="Supporting Summarization at ASBR">
+       <section title="Locality forwarding bias">
+         <t>A router has one or more forwarding plane units. A forwarding
+         plane unit consists of one or more interfaces. Forwarding of packets
+         to an interface that is member of a forwarding plane unit is cheaper
+         than across units. </t>
+
+         <t>A route entry in the forwarding-table may contain multiple
+         next-hops, each pointing to a network-interface. When forwarding a
+         packet, a forwarding plane unit may optionally provide preference to
+         a subset of these next-hops, whose interfaces are its own members.
+         This behavior is called "Locality forwarding bias". </t>
+       </section>
+
+       <section title="Label per group of peers sharing a locality">
+         <t>An ASBR MAY assign a distinct label for the set of eBGP-peers
+         that share a forwarding plane unit and advertise it to its internal
+         BGP mesh. The ASBR programs a forwarding action 'POP and IP-lookup'
+         into the MPLS forwarding table for these labels. While performing
+         the IP-lookup, the ASBR MUST perform "Locality-forwarding bias" to
+         ensure it only selects next-hops towards eBGP peers that are
+         attached to the current forwarding plane unit, where the IP-lookup
+         is happening.</t>
+
+         <t>This provides the ingress-peers with ability to steer traffic
+         towards a "subset of eBGP-peers" attached to an ASBR, while
+         preserving the ability of the ASBR to aggregate the IP prefixes
+         received from those eBGP-peers, while re-advertising to the internal
+         BGP mesh.</t>
+       </section>
      </section>
 
     </section> <!-- end 'Egress Next-hop Advertisement' -->
@@ -604,14 +636,14 @@
 	    information a very simple backup scheme
 	    could be to recurse to the relevant IP forwarding
 	    table and do an IP lookup to further determine
-	    a new egress link.	    
+	    a new egress link.
 	  </t>
 	</section>
       </section>
 
     </section> <!-- end 'Egress Link Protection' -->
 
-    
+
     <section title="Dynamic link utilization">
       <t>For a software component which controls the egress
       link selection it may be desirable to know about
