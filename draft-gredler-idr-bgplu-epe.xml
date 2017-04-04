@@ -84,20 +84,20 @@
     </author>
 
     <author fullname="Luyuan Fang" initials="L." surname="Fang">
-      <organization>Microsoft</organization>
+      <organization>eBay</organization>
       <address>
 	<postal>
-	  <street>5600 148th Ave NE</street>
-	  <city>Redmond</city>
+	  <street>411 108th Ave NE</street>
+	  <city>Bellevue</city>
 	  <region>WA</region>
-	  <code>98052</code>
+	  <code>98004</code>
 	  <country>US</country>
 	</postal>
-	<email>lufang@microsoft.com</email>
+	<email>lufang@ebay.com</email>
       </address>
     </author>
 
-    <date day="13" month="March" year="2017"/>
+    <date day="31" month="March" year="2017"/>
 
     <area>Routing</area>
 
