@@ -10,9 +10,8 @@
 <?rfc inline="yes"?>
 <?rfc compact="yes" ?>
 <?rfc subcompact="no" ?>
-<rfc category="info" docName="draft-gredler-idr-bgplu-epe-08"
+<rfc category="info" docName="draft-gredler-idr-bgplu-epe-12"
      ipr="trust200902">
-
   <!-- ***** FRONT MATTER ***** -->
 
   <front>
@@ -20,104 +19,141 @@
 
     <!-- add 'role="editor"' below for the editors if appropriate -->
 
-    <author fullname="Hannes Gredler" initials="H." surname="Gredler" role="editor">
+    <author fullname="Hannes Gredler" initials="H." role="editor"
+            surname="Gredler">
       <organization>RtBrick Inc.</organization>
+
       <address>
-	<email>hannes@rtbrick.com</email>
+        <email>hannes@rtbrick.com</email>
       </address>
     </author>
 
-    <author fullname="Kaliraj Vairavakkalai" initials="K." surname="Vairavakkalai">
+    <author fullname="Kaliraj Vairavakkalai" initials="K."
+            surname="Vairavakkalai">
       <organization>Juniper Networks, Inc.</organization>
+
       <address>
-	<postal>
-	  <street>1194 N. Mathilda Ave.</street>
-	  <city>Sunnyvale</city>
-	  <region>CA</region>
-	  <code>94089</code>
-	  <country>US</country>
-	</postal>
-	<email>kaliraj@juniper.net</email>
+        <postal>
+          <street>1194 N. Mathilda Ave.</street>
+
+          <city>Sunnyvale</city>
+
+          <region>CA</region>
+
+          <code>94089</code>
+
+          <country>US</country>
+        </postal>
+
+        <email>kaliraj@juniper.net</email>
       </address>
     </author>
 
-    <author fullname="Chandra Ramachandran" initials="C." surname="Ramachandran">
+    <author fullname="Chandra Ramachandran" initials="C."
+            surname="Ramachandran">
       <organization>Juniper Networks, Inc.</organization>
+
       <address>
-	<postal>
-	  <street>Electra, Exora Business Park Marathahalli - Sarjapur Outer Ring Road</street>
-	  <city>Bangalore</city>
-	  <region>KA</region>
-	  <code>560103</code>
-	  <country>India</country>
-	</postal>
-	<email>csekar@juniper.net</email>
+        <postal>
+          <street>Electra, Exora Business Park Marathahalli - Sarjapur Outer
+          Ring Road</street>
+
+          <city>Bangalore</city>
+
+          <region>KA</region>
+
+          <code>560103</code>
+
+          <country>India</country>
+        </postal>
+
+        <email>csekar@juniper.net</email>
       </address>
     </author>
 
     <author fullname="Balaji Rajagopalan" initials="B." surname="Rajagopalan">
       <organization>Juniper Networks, Inc.</organization>
+
       <address>
-	<postal>
-	  <street>Electra, Exora Business Park Marathahalli - Sarjapur Outer Ring Road</street>
-	  <city>Bangalore</city>
-	  <region>KA</region>
-	  <code>560103</code>
-	  <country>India</country>
-	</postal>
-	<email>balajir@juniper.net</email>
+        <postal>
+          <street>Electra, Exora Business Park Marathahalli - Sarjapur Outer
+          Ring Road</street>
+
+          <city>Bangalore</city>
+
+          <region>KA</region>
+
+          <code>560103</code>
+
+          <country>India</country>
+        </postal>
+
+        <email>balajir@juniper.net</email>
       </address>
     </author>
 
     <author fullname="Ebben Aries" initials="E." surname="Aries">
       <organization>Juniper Networks, Inc.</organization>
+
       <address>
-	<postal>
-	  <street>1194 N. Mathilda Ave.</street>
-	  <city>Sunnyvale</city>
-	  <region>CA</region>
-	  <code>94089</code>
-	  <country>US</country>
-	</postal>
-	<email>earies@juniper.net</email>
+        <postal>
+          <street>1194 N. Mathilda Ave.</street>
+
+          <city>Sunnyvale</city>
+
+          <region>CA</region>
+
+          <code>94089</code>
+
+          <country>US</country>
+        </postal>
+
+        <email>earies@juniper.net</email>
       </address>
     </author>
 
     <author fullname="Luyuan Fang" initials="L." surname="Fang">
-      <organization>Microsoft</organization>
+      <organization>eBay</organization>
+
       <address>
-	<postal>
-	  <street>5600 148th Ave NE</street>
-	  <city>Redmond</city>
-	  <region>WA</region>
-	  <code>98052</code>
-	  <country>US</country>
-	</postal>
-	<email>lufang@microsoft.com</email>
+        <postal>
+          <street>411 108th Ave NE</street>
+
+          <city>Bellevue</city>
+
+          <region>WA</region>
+
+          <code>98004</code>
+
+          <country>US</country>
+        </postal>
+
+        <email>lufang@ebay.com</email>
       </address>
     </author>
 
-    <date day="13" month="March" year="2017"/>
+    <date day="03" month="July" year="2020"/>
 
     <area>Routing</area>
 
     <workgroup>Inter-Domain Routing</workgroup>
 
     <keyword>MPLS</keyword>
+
     <keyword>BGP</keyword>
+
     <keyword>Label advertisement</keyword>
+
     <keyword>Egress Peer Engineering</keyword>
+
     <keyword>Traffic Engineering</keyword>
 
     <abstract>
-      <t>
-	The MPLS source routing paradigm provides path control
-	for both intra- and inter- Autonomous System (AS) traffic.
-	RSVP-TE is utilized for intra-AS path control.
-	This documents outlines how MPLS routers
-	may use the BGP labeled unicast protocol (BGP-LU)
-        for doing traffic-engineering on inter-AS links.
-      </t>
+      <t>The MPLS source routing paradigm provides path control for both
+      intra- and inter- Autonomous System (AS) traffic. RSVP-TE is utilized
+      for intra-AS path control. This documents outlines how MPLS routers may
+      use the BGP labeled unicast protocol (BGP-LU) for doing
+      traffic-engineering on inter-AS links.</t>
     </abstract>
 
     <note title="Requirements Language">
@@ -130,32 +166,23 @@
 
   <middle>
     <section title="Introduction">
-      <t>
-	Today, BGP-LU <xref target="RFC3107"/>
-	is used both as an intra-AS <xref
-        target="I-D.ietf-mpls-seamless-mpls"></xref> and inter-AS
-	routing protocol. BGP-LU may advertise a MPLS transport path between
-	IGP regions and Autonomous Systems. Those paths may span one or more
-	router hops. This document describes advertisement and use of
-	one-hop MPLS label-switched paths (LSPs) for traffic-engineering
-	the links between Autonomous Systems.
-      </t>
+      <t>Today, BGP-LU <xref target="RFC3107"/> is used both as an intra-AS
+      <xref target="I-D.ietf-mpls-seamless-mpls"/> and inter-AS routing
+      protocol. BGP-LU may advertise a MPLS transport path between IGP regions
+      and Autonomous Systems. Those paths may span one or more router hops.
+      This document describes advertisement and use of one-hop MPLS
+      label-switched paths (LSPs) for traffic-engineering the links between
+      Autonomous Systems.</t>
 
-      <t>
-        Consider <xref target="SINGLE_HOP_LSP"/>: an ASBR router (R2)
-        advertises a labeled host route for the remote-end IP address of
-        its link (IP3).
-
-	The BGP next-hop gets set to R2s loopback IP address. For the
-	advertised Label &lt;N&gt; a forwarding action of 'POP and forward' to
-	next-hop (IP3) is installed in R2's MPLS forwarding table.
-
-	Now consider if R2 had several links and R2 would advertise
-	labels for all of its inter-AS links.
-	By pushing the corresponding MPLS label &lt;N&gt; on the label-stack
-	an ingress router R1 may control the egress peer selection.
-      </t>
-
+      <t>Consider <xref target="SINGLE_HOP_LSP"/>: an ASBR router (R2)
+      advertises a labeled host route for the remote-end IP address of its
+      link (IP3). The BGP next-hop gets set to R2s loopback IP address. For
+      the advertised Label &lt;N&gt; a forwarding action of 'POP and forward'
+      to next-hop (IP3) is installed in R2's MPLS forwarding table. Now
+      consider if R2 had several links and R2 would advertise labels for all
+      of its inter-AS links. By pushing the corresponding MPLS label &lt;N&gt;
+      on the label-stack an ingress router R1 may control the egress peer
+      selection.</t>
 
       <figure anchor="SINGLE_HOP_LSP" title="single-hop LSPs">
         <artwork>
@@ -170,40 +197,30 @@
         </artwork>
       </figure>
 
-      <t>
-	Of course, since R1 and R2 may not be directly connected to
-	each other, if the interior routers within AS1 do not maintain
-	routes to external destinations, carrying traffic to such destinations
-	would require a tunnel from R1 to R2. Such tunnel could be realized
-        as either a MPLS Label Switched Path (LSP), or by GRE <xref
-        target="RFC2784"/>.
-      </t>
-
+      <t>Of course, since R1 and R2 may not be directly connected to each
+      other, if the interior routers within AS1 do not maintain routes to
+      external destinations, carrying traffic to such destinations would
+      require a tunnel from R1 to R2. Such tunnel could be realized as either
+      a MPLS Label Switched Path (LSP), or by GRE <xref
+      target="RFC2784"/>.</t>
     </section>
 
     <section title="Motivation, Rationale and Applicability">
-      <t>
-	BGP-LU is often just seen as a 'stitching' protocol for
-	connecting Autonomous Systems. BGP-LU is often not viewed
-	as a viable protocol for solving the Inter-domain
-	traffic-engineering problem.
-      </t>
-      <t>
-	With this document the authors want to clarify the use
-	of BGP-LU for Egress Peering traffic-engineering purposes and encourage
-	both implementers and network operators to use a widely deployed and
-	operationally well understood protocol,
-	rather than inventing new protocols or new extensions
-	to the existing protocols.
-      </t>
+      <t>BGP-LU is often just seen as a 'stitching' protocol for connecting
+      Autonomous Systems. BGP-LU is often not viewed as a viable protocol for
+      solving the Inter-domain traffic-engineering problem.</t>
+
+      <t>With this document the authors want to clarify the use of BGP-LU for
+      Egress Peering traffic-engineering purposes and encourage both
+      implementers and network operators to use a widely deployed and
+      operationally well understood protocol, rather than inventing new
+      protocols or new extensions to the existing protocols.</t>
     </section>
 
     <section title="Sample Topology">
-      <t>
-	The following <xref target="SAMPLE_TOPOLOGY">topology</xref>
-	and IP addresses shall be used throughout
-	the Egress Peering Engineering advertisement examples.
-      </t>
+      <t>The following <xref target="SAMPLE_TOPOLOGY">topology</xref> and IP
+      addresses shall be used throughout the Egress Peering Engineering
+      advertisement examples.</t>
 
       <figure anchor="SAMPLE_TOPOLOGY" title="Sample Topology">
         <artwork>
@@ -232,114 +249,108 @@
       </figure>
 
       <section title="Loopback IP addresses and Router-IDs">
-	<t><list style="symbols">
-          <t>R1: 192.0.2.1/32</t>
-          <t>R2: 192.0.2.2/32</t>
-          <t>ASBR1: 192.0.2.11/32</t>
-          <t>ASBR2: 192.0.2.12/32</t>
-          <t>ASBR3: 192.0.2.13/32</t>
-          <t>ASBR4: 192.0.2.14/32</t>
-          <t>ASBR5: 192.0.2.15/32</t>
-          <t>ASBR6: 192.0.2.16/32</t>
-	</list></t>
+        <t><list style="symbols">
+            <t>R1: 192.0.2.1/32</t>
+
+            <t>R2: 192.0.2.2/32</t>
+
+            <t>ASBR1: 192.0.2.11/32</t>
+
+            <t>ASBR2: 192.0.2.12/32</t>
+
+            <t>ASBR3: 192.0.2.13/32</t>
+
+            <t>ASBR4: 192.0.2.14/32</t>
+
+            <t>ASBR5: 192.0.2.15/32</t>
+
+            <t>ASBR6: 192.0.2.16/32</t>
+          </list></t>
       </section>
 
       <section title="Link IP addresses">
-	<t><list style="symbols">
-          <t>ASBR1 (203.0.113.2/31) to ASBR3 (203.0.113.3/31) link #1</t>
-          <t>ASBR1 (203.0.113.4/31) to ASBR3 (203.0.113.5/31) link #2</t>
-          <t>ASBR1 (203.0.113.6/31) to ASBR4 (203.0.113.7/31)</t>
-          <t>ASBR1 (203.0.113.8/31) to ASBR5 (203.0.113.9/31)</t>
-          <t>ASBR2 (203.0.113.10/31) to ASBR5 (203.0.113.11/31)</t>
-	</list></t>
+        <t><list style="symbols">
+            <t>ASBR1 (203.0.113.2/31) to ASBR3 (203.0.113.3/31) link #1</t>
+
+            <t>ASBR1 (203.0.113.4/31) to ASBR3 (203.0.113.5/31) link #2</t>
+
+            <t>ASBR1 (203.0.113.6/31) to ASBR4 (203.0.113.7/31)</t>
+
+            <t>ASBR1 (203.0.113.8/31) to ASBR5 (203.0.113.9/31)</t>
+
+            <t>ASBR2 (203.0.113.10/31) to ASBR5 (203.0.113.11/31)</t>
+          </list></t>
       </section>
     </section>
 
     <section title="Service Route Advertisement">
-      <t>In <xref target="SELECTIVE_IBGP_NH_REWRITE"/> a simple
-      network layout is shown. There are two classes of BGP speakers:
+      <t>In <xref target="SELECTIVE_IBGP_NH_REWRITE"/> a simple network layout
+      is shown. There are two classes of BGP speakers: <list style="numbers">
+          <t>Ingress Routers</t>
 
-      <list style="numbers">
-	<t>Ingress Routers</t>
-	<t>Controllers</t>
-      </list>
-      </t>
+          <t>Controllers</t>
+        </list></t>
 
-      <t> Ingress routers receive BGP-LU routes from the ASBRs. Each
-      BGP-LU route corresponds to an egress link. Furthermore Ingress
-      routers receive their service routes using the BGP protocol.
-      The BGP Add-paths extension <xref target="I-D.ietf-idr-add-paths"/>
-      ensures that multiple paths to a given service route may get advertised.
-      </t>
+      <t>Ingress routers receive BGP-LU routes from the ASBRs. Each BGP-LU
+      route corresponds to an egress link. Furthermore Ingress routers receive
+      their service routes using the BGP protocol. The BGP Add-paths extension
+      <xref target="I-D.ietf-idr-add-paths"/> ensures that multiple paths to a
+      given service route may get advertised.</t>
 
       <t>As outlined in <xref
-      target="I-D.filsfils-spring-segment-routing-central-epe"></xref>,
-      Controllers receive BGP-LU routes from the ASBRs as well.
-      However the service routes may be received either using the
-      BGP protocol plus the BGP Add-paths extension
-      <xref target="I-D.ietf-idr-add-paths"/> or alternatively
-      The BGP Monitoring protocol <xref target="I-D.ietf-grow-bmp"/> (BMP).
-      BMP has support for advertising the RIB-In of a BGP router.  As
-      such it might be a suitable protocol for feeding all potential
-      egress paths of a service-route from a ASBR into a controller.
-      </t>
+      target="I-D.filsfils-spring-segment-routing-central-epe"/>, Controllers
+      receive BGP-LU routes from the ASBRs as well. However the service routes
+      may be received either using the BGP protocol plus the BGP Add-paths
+      extension <xref target="I-D.ietf-idr-add-paths"/> or alternatively The
+      BGP Monitoring protocol <xref target="I-D.ietf-grow-bmp"/> (BMP). BMP
+      has support for advertising the RIB-In of a BGP router. As such it might
+      be a suitable protocol for feeding all potential egress paths of a
+      service-route from a ASBR into a controller.</t>
     </section>
 
     <section title="Egress Next-hop Advertisement">
-      <t>
-        An ASBR assigns a distinct label for each of its next-hops
-        facing an eBGP peer and advertises it to its internal BGP
-        mesh. The ASBR programs a forwarding action 'POP and forward'
-        into the MPLS forwarding table. Note that the neighboring AS
-        is not required to support exchanging NLRIs with the local AS
-        using BGP-LU. It is the local ASBR (ASBR{1,2}) which generates
-        the BGP-LU routes into its iBGP mesh or controller facing
-        session(s). The forwarding next-hop for those routes points to
-        the link-IP addresses of the remote ASBRs (ASBR{3,4,5}). Note
-        that the generated BGP-LU routes always match the BGP next-hop
-        that the remote ASBRs set their BGP service routes to, such
-        that the software component doing route-resolution understands
-        the association between the BGP service route and the BGP-LU
-        forwarding route.
-      </t>
+      <t>An ASBR assigns a distinct label for each of its next-hops facing an
+      eBGP peer and advertises it to its internal BGP mesh. The ASBR programs
+      a forwarding action 'POP and forward' into the MPLS forwarding table.
+      Note that the neighboring AS is not required to support exchanging NLRIs
+      with the local AS using BGP-LU. It is the local ASBR (ASBR{1,2}) which
+      generates the BGP-LU routes into its iBGP mesh or controller facing
+      session(s). The forwarding next-hop for those routes points to the
+      link-IP addresses of the remote ASBRs (ASBR{3,4,5}). Note that the
+      generated BGP-LU routes always match the BGP next-hop that the remote
+      ASBRs set their BGP service routes to, such that the software component
+      doing route-resolution understands the association between the BGP
+      service route and the BGP-LU forwarding route.</t>
 
       <section title="iBGP meshing and BGP nexthop rewrite policy">
-	<t>Throughout this document we describe how the BGP next-hop
-	of both BGP Service Routes and BGP-LU routes
-	shall be rewritten. This may clash with existing network deployments
-        and existing network configurations guidelines which may mandate
-        to rewrite the BGP next-hop when an BGP update enters an AS.
-	</t>
+        <t>Throughout this document we describe how the BGP next-hop of both
+        BGP Service Routes and BGP-LU routes shall be rewritten. This may
+        clash with existing network deployments and existing network
+        configurations guidelines which may mandate to rewrite the BGP
+        next-hop when an BGP update enters an AS.</t>
 
-	<t>The Egress peering use case assumes a central controller
-        as shown <xref target="SELECTIVE_IBGP_NH_REWRITE"/>. In order to
-        support both existing BGP nexthop guidelines and the suggestion
-        described in this document, an implementation SHOULD support
-        several internal BGP peer-groups:
+        <t>The Egress peering use case assumes a central controller as shown
+        <xref target="SELECTIVE_IBGP_NH_REWRITE"/>. In order to support both
+        existing BGP nexthop guidelines and the suggestion described in this
+        document, an implementation SHOULD support several internal BGP
+        peer-groups: <list style="numbers">
+            <t>iBGP peer group for Ingress Routers</t>
 
-        <list style="numbers">
-	  <t>iBGP peer group for Ingress Routers</t>
-	  <t>iBGP peer group for Controllers</t>
-	</list>
-	</t>
+            <t>iBGP peer group for Controllers</t>
+          </list></t>
 
-	<t>The first peer group MAY be left unchanged
-	and use any existing BGP nexthop rewrite policy.
-	The second peer group MUST use the BGP rewrite policy
-	described in this document for both service and BGP-LU routes.
-	</t>
+        <t>The first peer group MAY be left unchanged and use any existing BGP
+        nexthop rewrite policy. The second peer group MUST use the BGP rewrite
+        policy described in this document for both service and BGP-LU
+        routes.</t>
 
-	<t>
-	Of course a common iBGP peer group and a common rewrite policy
-	may be used if the proposed policy is compatible with
-	existing routing software implementations of BGP next-hop
-	route resolution.
-	</t>
+        <t>Of course a common iBGP peer group and a common rewrite policy may
+        be used if the proposed policy is compatible with existing routing
+        software implementations of BGP next-hop route resolution.</t>
 
-	<t>
-      <figure anchor="SELECTIVE_IBGP_NH_REWRITE"
-              title="Selective iBGP NH rewrite">
-        <artwork>
+        <t><figure anchor="SELECTIVE_IBGP_NH_REWRITE"
+            title="Selective iBGP NH rewrite">
+            <artwork>
 +-----------+
 | Ingress   |
 |  Router   |
@@ -348,7 +359,7 @@
      |
 +-----------+
 |    BGP    |               +------------+
-|   Route   |-------------->| Controller |
+|   Route   |--------------&gt;| Controller |
 | Reflector |               +------------+
 +-----------+                     ^
      ^   ^                        |
@@ -361,362 +372,254 @@
 |   ASBR1   |    . . .    |   ASBR2   |
 +-----------+             +-----------+
         </artwork>
-      </figure>
-	</t>
+          </figure></t>
       </section>
 
       <section title="Single-hop eBGP">
-	<t>In <xref target="SAMPLE_TOPOLOGY"/> the ASBR{1,5}
-	and ASBR{2,5} links are examples for single-hop eBGP
-	advertisements.
-	</t>
-	<t>
-	  <list style="symbols">
-	    <t>ASBR5 advertises a BGP service (SAFI-1)
-	    route {172.16/12}
-	    to ASBR1 with a BGP next-hop of 203.0.113.9. When ASBR1
-	    re-advertises this BGP service route towards its iBGP mesh
-	    (R{1,2}) it does not overwrite the BGP next-hop,
-	    but rather leaves it unchanged.
-	    </t>
-	    <t>ASBR1 advertises a BGP-LU route {203.0.113.9/32, label 100}
-	    with a BGP next hop of 192.0.2.11.
-	    ASBR1 programs a MPLS forwarding state of 'POP and forward'
-	    to 203.0.113.9 for the advertised label 100.
-	    </t>
+        <t>In <xref target="SAMPLE_TOPOLOGY"/> the ASBR{1,5} and ASBR{2,5}
+        links are examples for single-hop eBGP advertisements.</t>
 
-	    <t>ASBR5 advertises a BGP service (SAFI-1)
-	    route {172.16/12}
-	    to ASBR2 with a BGP next-hop of 203.0.113.11. When ASBR2
-	    re-advertises this BGP service route towards its iBGP mesh
-	    (R{1,2}) it does not overwrite the BGP next-hop,
-	    but rather leaves it unchanged.
-	    </t>
-	    <t>ASBR2 advertises BGP-LU route {203.0.113.11/32, label 101}
-	    with a BGP next hop of 192.0.2.12.
-	    ASBR2 programs a MPLS forwarding state of 'POP and forward'
-	    to 203.0.113.11 for the advertised label 101.
-	    </t>
+        <t><list style="symbols">
+            <t>ASBR5 advertises a BGP service (SAFI-1) route {172.16/12} to
+            ASBR1 with a BGP next-hop of 203.0.113.9. When ASBR1 re-advertises
+            this BGP service route towards its iBGP mesh (R{1,2}) it does not
+            overwrite the BGP next-hop, but rather leaves it unchanged.</t>
 
-            <t>Should the operator already be redistributing egress links
-            into the network for purposes of BGP next-hop resolution,
-            the BGP-LU route {203.0.113.9/32, label 100} will now take
-            precedence due to LPM over the previous redistributed prefix
-            {203.0.113.8/31}. If the BGP next-hop prefix {203.0.113.9/32} were
-            to be redistributed as-is, then standard protocol best-path
-            and preference selection mechanisms will be exhausted in
-            order to select the best-path.
-            </t>
+            <t>ASBR1 advertises a BGP-LU route {203.0.113.9/32, label 100}
+            with a BGP next hop of 192.0.2.11. ASBR1 programs a MPLS
+            forwarding state of 'POP and forward' to 203.0.113.9 for the
+            advertised label 100.</t>
 
-	    <t>In general, ASBR1 may receive advertisements for the
-	    route to 172.16/12 from ASBR3 and ASBR4, as well as
-	    from ASBR5.  One of these other advertisements may be
-	    chosen as the best path by the BGP decision process.
-	    In order to allow ASBR1 to re-advertise the route to
-	    172.16/12 received from ASBR5 with next-hop 203.0.113.9,
-	    independent of the other advertisements received,
-	    ASBR1 and R{1,2} need to support the BGP add-paths
-	    extension.
-	    <xref target="I-D.ietf-idr-add-paths"/>.
-	    </t>
+            <t>ASBR5 advertises a BGP service (SAFI-1) route {172.16/12} to
+            ASBR2 with a BGP next-hop of 203.0.113.11. When ASBR2
+            re-advertises this BGP service route towards its iBGP mesh
+            (R{1,2}) it does not overwrite the BGP next-hop, but rather leaves
+            it unchanged.</t>
 
-	  </list>
-	</t>
+            <t>ASBR2 advertises BGP-LU route {203.0.113.11/32, label 101} with
+            a BGP next hop of 192.0.2.12. ASBR2 programs a MPLS forwarding
+            state of 'POP and forward' to 203.0.113.11 for the advertised
+            label 101.</t>
+
+            <t>Should the operator already be redistributing egress links into
+            the network for purposes of BGP next-hop resolution, the BGP-LU
+            route {203.0.113.9/32, label 100} will now take precedence due to
+            LPM over the previous redistributed prefix {203.0.113.8/31}. If
+            the BGP next-hop prefix {203.0.113.9/32} were to be redistributed
+            as-is, then standard protocol best-path and preference selection
+            mechanisms will be exhausted in order to select the best-path.</t>
+
+            <t>In general, ASBR1 may receive advertisements for the route to
+            172.16/12 from ASBR3 and ASBR4, as well as from ASBR5. One of
+            these other advertisements may be chosen as the best path by the
+            BGP decision process. In order to allow ASBR1 to re-advertise the
+            route to 172.16/12 received from ASBR5 with next-hop 203.0.113.9,
+            independent of the other advertisements received, ASBR1 and R{1,2}
+            need to support the BGP add-paths extension. <xref
+            target="I-D.ietf-idr-add-paths"/>.</t>
+          </list></t>
       </section>
 
       <section title="Multi-hop eBGP">
-	<t>
-	  Todays operational practice for load-sharing across
-	  parallel links is to configure a single multi-hop eBGP
-	  session between a pair of routers. The IP addresses for the
-	  Multi-hop eBGP session are typically sourced from the loopback IP
-	  interfaces. Note that those IP addresses do not share an
-	  IP subnet. Most often those loopback IP addresses are most
-	  specific host routes.
-	  Since the BGP next-hops of the received BGP service routes
-	  are typically rewritten to the remote routers loopback IP
-	  address they cannot get immediatly resolved by the receiving
-	  router. To overcome this,
-          the operator configures a static route with next-hops pointing
-	  to each of the remote-IP addresses of the
-	  underlying links.
-	</t>
+        <t>Todays operational practice for load-sharing across parallel links
+        is to configure a single multi-hop eBGP session between a pair of
+        routers. The IP addresses for the Multi-hop eBGP session are typically
+        sourced from the loopback IP interfaces. Note that those IP addresses
+        do not share an IP subnet. Most often those loopback IP addresses are
+        most specific host routes. Since the BGP next-hops of the received BGP
+        service routes are typically rewritten to the remote routers loopback
+        IP address they cannot get immediatly resolved by the receiving
+        router. To overcome this, the operator configures a static route with
+        next-hops pointing to each of the remote-IP addresses of the
+        underlying links.</t>
 
-	<t>In <xref target="SAMPLE_TOPOLOGY"/> both ASBR{1,3}
-	links are examples of a multi-hop eBGP
-	advertisement. In order to advertise a distinct label
-	for a common FEC throughout the iBGP mesh, ASBR1 and
-	all the receiving iBGP routers need to support the
-	BGP Add-paths extension.
-	<xref target="I-D.ietf-idr-add-paths"/>.
-	</t>
+        <t>In <xref target="SAMPLE_TOPOLOGY"/> both ASBR{1,3} links are
+        examples of a multi-hop eBGP advertisement. In order to advertise a
+        distinct label for a common FEC throughout the iBGP mesh, ASBR1 and
+        all the receiving iBGP routers need to support the BGP Add-paths
+        extension. <xref target="I-D.ietf-idr-add-paths"/>.</t>
 
-	<t>
-	<list style="symbols">
-	  <t>ASBR3 advertises a BGP service (SAFI-1)
-	  route {172.16/12} over multi-hop eBGP
-	  to ASBR1 with a BGP next-hop of 192.0.2.13. When ASBR1
-	  re-advertises this BGP service route towards its iBGP mesh
-	  (R{1,2}) it does not overwrite the BGP next-hop,
-	  but rather leaves it unchanged. Note that
-	  the iBGP routers SHOULD support the BGP Add-paths
-	  extension <xref target="I-D.ietf-idr-add-paths"/>
-	  such that ASBR can re-advertise all paths to the
-	  SAFI-1 route {172.16/12}.
-	  </t>
+        <t><list style="symbols">
+            <t>ASBR3 advertises a BGP service (SAFI-1) route {172.16/12} over
+            multi-hop eBGP to ASBR1 with a BGP next-hop of 192.0.2.13. When
+            ASBR1 re-advertises this BGP service route towards its iBGP mesh
+            (R{1,2}) it does not overwrite the BGP next-hop, but rather leaves
+            it unchanged. Note that the iBGP routers SHOULD support the BGP
+            Add-paths extension <xref target="I-D.ietf-idr-add-paths"/> such
+            that ASBR can re-advertise all paths to the SAFI-1 route
+            {172.16/12}.</t>
 
-	  <t>For link #1, ASBR1 advertises into its iBGP mesh
-	  a BGP-LU route {192.0.2.13/32, label 102}
-	  with a BGP next hop of 192.0.2.11. To differentiate
-	  this from the link #2 route-advertisement (which contains the same FEC)
-	  it is setting the path-ID to 1.
-	  ASBR1 programs a MPLS forwarding state of 'POP and forward'
-	  to 203.0.113.3 for the advertised label 102.
-	  </t>
+            <t>For link #1, ASBR1 advertises into its iBGP mesh a BGP-LU route
+            {192.0.2.13/32, label 102} with a BGP next hop of 192.0.2.11. To
+            differentiate this from the link #2 route-advertisement (which
+            contains the same FEC) it is setting the path-ID to 1. ASBR1
+            programs a MPLS forwarding state of 'POP and forward' to
+            203.0.113.3 for the advertised label 102.</t>
 
-	  <t>For link #2, ASBR1 advertises into its iBGP mesh
-	  a BGP-LU route {192.0.2.13/32, label 103}
-	  with a BGP next hop of 192.0.2.11. To differentiate
-	  this from the link #1 route-advertisement (which contains the same FEC)
-	  it is setting the path-ID to 2.
-	  ASBR1 programs a MPLS forwarding state of 'POP and forward'
-	  to 203.0.113.5 for the advertised label 103.
-	  </t>
+            <t>For link #2, ASBR1 advertises into its iBGP mesh a BGP-LU route
+            {192.0.2.13/32, label 103} with a BGP next hop of 192.0.2.11. To
+            differentiate this from the link #1 route-advertisement (which
+            contains the same FEC) it is setting the path-ID to 2. ASBR1
+            programs a MPLS forwarding state of 'POP and forward' to
+            203.0.113.5 for the advertised label 103.</t>
 
-          <t>Should the operator already be redistributing static routes
-          into the network, the BGP next-hop {192.0.2.13} may
-          already be resolvable. It is then that standard protocol
-          best-path and preference selection mechanisms will be
-          exhausted in order to select the best-path.
-          </t>
-
-	</list>
-	</t>
+            <t>Should the operator already be redistributing static routes
+            into the network, the BGP next-hop {192.0.2.13} may already be
+            resolvable. It is then that standard protocol best-path and
+            preference selection mechanisms will be exhausted in order to
+            select the best-path.</t>
+          </list></t>
       </section>
 
       <section title="Grouping of Peers">
-	<t>
-	  In addition to offering a distinct BGP-LU label for each egress
-	  link, an ASBR MAY want to advertise a BGP-LU label which represents
-	  a load-balancing forwarding action across a set of peers.
-	  The difference is here that the ingress node gives up
-	  individual link control, but rather delegates the
-	  load-balancing decision to a particular egress router which
-	  has the freedom to send the traffic down to any link
-	  in the Peer Set as identified by the BGP-LU label.
-	</t>
+        <t>In addition to offering a distinct BGP-LU label for each egress
+        link, an ASBR MAY want to advertise a BGP-LU label which represents a
+        load-balancing forwarding action across a set of peers. The difference
+        is here that the ingress node gives up individual link control, but
+        rather delegates the load-balancing decision to a particular egress
+        router which has the freedom to send the traffic down to any link in
+        the Peer Set as identified by the BGP-LU label.</t>
 
-	<t>
-          Assume that ASBR1 wants to advertise a label identifying the
-	  Peer Set {ASBR3, ASBR4, ASBR5}.
+        <t>Assume that ASBR1 wants to advertise a label identifying the Peer
+        Set {ASBR3, ASBR4, ASBR5}. <list style="symbols">
+            <t>For the two ASBR{1,3} links in <xref
+            target="SAMPLE_TOPOLOGY"/>, belonging to Peer Set 1, ASBR1
+            advertises a single BGP-LU route {192.0.2.13/32, label 104} with a
+            BGP next hop of 192.0.2.11. To differentiate this from the
+            ASBR{1,3} single link route-advertisements (which contains the
+            same FEC) it is setting the path-ID to 3 and attaching a Peer-Set
+            Community 'Peer Set 1'.</t>
 
-	  <list style="symbols">
-	    <t>
-	      For the two ASBR{1,3} links in <xref target="SAMPLE_TOPOLOGY"/>,
-	      belonging to Peer Set 1,
-	      ASBR1 advertises a single BGP-LU route {192.0.2.13/32, label 104}
-	      with a BGP next hop of 192.0.2.11. To differentiate
-	      this from the ASBR{1,3} single link route-advertisements
-	      (which contains the same FEC) it is setting the path-ID to 3
-	      and attaching a Peer-Set Community 'Peer Set 1'.
-	    </t>
+            <t>For the ASBR{1,4} link in <xref target="SAMPLE_TOPOLOGY"/>,
+            ASBR1 advertises a BGP-LU route {203.0.113.7/32, label 104} with a
+            BGP next hop of 192.0.2.11. To differentiate this from the
+            ASBR{1,4} single link route-advertisements (which contains the
+            same FEC) it is setting the path-ID to 2 and attaching a Peer-Set
+            Community 'Peer Set 1'.</t>
 
-	    <t>
-	      For the ASBR{1,4} link in <xref target="SAMPLE_TOPOLOGY"/>,
-	      ASBR1 advertises a BGP-LU route {203.0.113.7/32, label 104}
-	      with a BGP next hop of 192.0.2.11. To differentiate
-	      this from the ASBR{1,4} single link route-advertisements
-	      (which contains the same FEC) it is setting the path-ID to 2
-	      and attaching a Peer-Set Community 'Peer Set 1'.
-	    </t>
+            <t>For the ASBR{1,5} link in <xref target="SAMPLE_TOPOLOGY"/>,
+            ASBR1 advertises a BGP-LU route {203.0.113.9/32, label 104} with a
+            BGP next hop of 192.0.2.11. To differentiate this from the
+            ASBR{1,5} single link route-advertisements (which contains the
+            same FEC) it is setting the path-ID to 2 and attaching a Peer-Set
+            Community 'Peer Set 1'.</t>
+          </list> Finally ASBR1 programs a MPLS forwarding state of 'POP and
+        load-balance' to {203.0.113.3, 203.0.113.5, 203.0.113.7, 203.0.113.9}
+        for the advertised label 104.</t>
+      </section>
+    </section>
 
-	    <t>
-	      For the ASBR{1,5} link in <xref target="SAMPLE_TOPOLOGY"/>,
-	      ASBR1 advertises a BGP-LU route {203.0.113.9/32, label 104}
-	      with a BGP next hop of 192.0.2.11. To differentiate
-	      this from the ASBR{1,5} single link route-advertisements
-	      (which contains the same FEC) it is setting the path-ID to 2
-	      and attaching a Peer-Set Community 'Peer Set 1'.
-	    </t>
-
-	  </list>
-
-	  Finally ASBR1 programs a MPLS forwarding state of 'POP and
-	  load-balance' to {203.0.113.3, 203.0.113.5, 203.0.113.7, 203.0.113.9}
-	  for the advertised label 104.
-	</t>
-     </section>
-
-     <section title="Supporting Summarization at ASBR">
-       <section title="Locality forwarding bias">
-         <t>A router has one or more forwarding plane units. A forwarding
-         plane unit consists of one or more interfaces. Forwarding of packets
-         to an interface that is member of a forwarding plane unit is cheaper
-         than across units. </t>
-
-         <t>A route entry in the forwarding-table may contain multiple
-         next-hops, each pointing to a network-interface. When forwarding a
-         packet, a forwarding plane unit may optionally provide preference to
-         a subset of these next-hops, whose interfaces are its own members.
-         This behavior is called "Locality forwarding bias". </t>
-       </section>
-
-       <section title="Label per group of peers sharing a locality">
-         <t>An ASBR MAY assign a distinct label for the set of eBGP-peers
-         that share a forwarding plane unit and advertise it to its internal
-         BGP mesh. The ASBR programs a forwarding action 'POP and IP-lookup'
-         into the MPLS forwarding table for these labels. While performing
-         the IP-lookup, the ASBR MUST perform "Locality-forwarding bias" to
-         ensure it only selects next-hops towards eBGP peers that are
-         attached to the current forwarding plane unit, where the IP-lookup
-         is happening.</t>
-
-         <t>This provides the ingress-peers with ability to steer traffic
-         towards a "subset of eBGP-peers" attached to an ASBR, while
-         preserving the ability of the ASBR to aggregate the IP prefixes
-         received from those eBGP-peers, while re-advertising to the internal
-         BGP mesh.</t>
-       </section>
-     </section>
-
-    </section> <!-- end 'Egress Next-hop Advertisement' -->
+    <!-- end 'Egress Next-hop Advertisement' -->
 
     <section title="Egress Link Protection">
-      <t> It is desirable to provide a local-repair based
-      protection scheme, in case a redundant path
-      is available to reach a peer AS. Protection
-      may be applied at multiple levels in the routing stack.
-      Since the ASBR has insight into both BGP-LU and BGP service
-      advertisements, protection can be provided at the BGP-LU,
-      at the BGP service or both levels.
-      </t>
+      <t>It is desirable to provide a local-repair based protection scheme, in
+      case a redundant path is available to reach a peer AS. Protection may be
+      applied at multiple levels in the routing stack. Since the ASBR has
+      insight into both BGP-LU and BGP service advertisements, protection can
+      be provided at the BGP-LU, at the BGP service or both levels.</t>
 
       <section title="FRR backup routes">
-	<t>
-	  Assume the network operator wants to provide
-	  a local-repair next-hop for the 172.16/12 BGP
-	  service route at ASBR1. The active route
-	  resolves over the parallel links towards ASBR3.
-	  In case the link #1 between ASBR{1,3} fails
-	  there are now several candidate backup paths providing
-	  protection against link or node failure.
-	</t>
+        <t>Assume the network operator wants to provide a local-repair
+        next-hop for the 172.16/12 BGP service route at ASBR1. The active
+        route resolves over the parallel links towards ASBR3. In case the link
+        #1 between ASBR{1,3} fails there are now several candidate backup
+        paths providing protection against link or node failure.</t>
 
-	<section title="Local links">
-	  <t>
-	    Assuming that the remaining link #2 between ASBR{1,3}
-	    has enough capacity, and link-protection is sufficient,
-	    this link MAY serve as temporary backup.
-	  </t>
+        <section title="Local links">
+          <t>Assuming that the remaining link #2 between ASBR{1,3} has enough
+          capacity, and link-protection is sufficient, this link MAY serve as
+          temporary backup.</t>
 
-	  <t>
-	    However if node-protection or additional capacity is
-	    desired, then the local link between ASBR{1,4} or ASBR{1,5}
-	    MAY be used as temporary backup.
-	  </t>
-	</section>
+          <t>However if node-protection or additional capacity is desired,
+          then the local link between ASBR{1,4} or ASBR{1,5} MAY be used as
+          temporary backup.</t>
+        </section>
 
-	<section title="Remote BGP-LU labels">
-	  <t>ASBR1 is both originator and receiver of
-	  BGP routing information. For this protection
-	  method it is required that the ASBRs support the
-	  <xref target="I-D.ietf-idr-best-external"/>
-	  behavior.
+        <section title="Remote BGP-LU labels">
+          <t>ASBR1 is both originator and receiver of BGP routing information.
+          For this protection method it is required that the ASBRs support the
+          <xref target="I-D.ietf-idr-best-external"/> behavior. ASBR1 receives
+          both the BGP-LU and BGP service routes from ASBR2 and therefore can
+          use the ASBR2 advertised label as a backup path given that ASBR1 has
+          a tunnel towards ASBR2.</t>
+        </section>
 
-	  ASBR1 receives both the BGP-LU and BGP service routes from
-	  ASBR2 and therefore can use the ASBR2 advertised label
-	  as a backup path given that ASBR1 has a tunnel towards
-	  ASBR2.
-	  </t>
-	</section>
-
-	<section title="Local IP forwarding tables">
-	  <t>
-	    For protecting plain unicast (Internet) routing
-	    information a very simple backup scheme
-	    could be to recurse to the relevant IP forwarding
-	    table and do an IP lookup to further determine
-	    a new egress link.
-	  </t>
-	</section>
+        <section title="Local IP forwarding tables">
+          <t>For protecting plain unicast (Internet) routing information a
+          very simple backup scheme could be to recurse to the relevant IP
+          forwarding table and do an IP lookup to further determine a new
+          egress link.</t>
+        </section>
       </section>
+    </section>
 
-    </section> <!-- end 'Egress Link Protection' -->
-
+    <!-- end 'Egress Link Protection' -->
 
     <section title="Dynamic link utilization">
-      <t>For a software component which controls the egress
-      link selection it may be desirable to know about
-      a particular egress links current utilization, such that
-      it can adjust the traffic that gets sent to a particular
-      interface.
-      </t>
+      <t>For a software component which controls the egress link selection it
+      may be desirable to know about a particular egress links current
+      utilization, such that it can adjust the traffic that gets sent to a
+      particular interface.</t>
 
-      <t>
-      In <xref target="I-D.ietf-idr-link-bandwidth"/>
-      a community for reporting link-bandwidth is specified.
-      Rather than reporting the static bandwidth of the link,
-      the ASBRs shall report the available bandwidth as seen
-      by the data-plane via the link-bandwidth
-      community in their BGP-LU update message.
-      </t>
+      <t>In <xref target="I-D.ietf-idr-link-bandwidth"/> a community for
+      reporting link-bandwidth is specified. Rather than reporting the static
+      bandwidth of the link, the ASBRs shall report the available bandwidth as
+      seen by the data-plane via the link-bandwidth community in their BGP-LU
+      update message.</t>
 
-      <t>
-      It is crucial that ingress routers
-      learn quickly about congestion of an egress link and hence
-      it is desired to get timely updates of the advertised
-      per-link BGP-LU routes carrying the available
-      bandwidth information when the available bandwidth crosses a
-      certain (preconfigured) threshold.
-      </t>
+      <t>It is crucial that ingress routers learn quickly about congestion of
+      an egress link and hence it is desired to get timely updates of the
+      advertised per-link BGP-LU routes carrying the available bandwidth
+      information when the available bandwidth crosses a certain
+      (preconfigured) threshold.</t>
 
-      <t>
-      Controllers may also utilize the link-bandwidth community among
-      other common mechanisms to retrieve data-plane statistics (e.g.
-      SNMP, NETCONF)
-      </t>
-
+      <t>Controllers may also utilize the link-bandwidth community among other
+      common mechanisms to retrieve data-plane statistics (e.g. SNMP,
+      NETCONF)</t>
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
-      <t>Many thanks to Yakov Rekhter, Chris Bowers and Jeffrey
-      (Zhaohui) Zhang
-      for their detailed review and insightful comments.</t>
-      <t>Special thanks to Richard Steenbergen and Tom Scholl
-      who brought up the original idea of using MPLS for BGP
-	based egress load-balancing at their inspiring talk at Nanog 48.
-      </t>
+      <t>Many thanks to Yakov Rekhter, Chris Bowers and Jeffrey (Zhaohui)
+      Zhang for their detailed review and insightful comments.</t>
+
+      <t>Special thanks to Richard Steenbergen and Tom Scholl who brought up
+      the original idea of using MPLS for BGP based egress load-balancing at
+      their inspiring talk at Nanog 48.</t>
     </section>
 
     <section anchor="IANA" title="IANA Considerations">
-      <t>
-	This documents does not request any action from IANA.
-      </t>
+      <t>This documents does not request any action from IANA.</t>
     </section>
 
     <section anchor="Security" title="Security Considerations">
-      <t>This document does not introduce any change in terms of BGP security.</t>
+      <t>This document does not introduce any change in terms of BGP
+      security.</t>
     </section>
   </middle>
 
   <!--  *****BACK MATTER ***** -->
 
   <back>
-
     <references title="Normative References">
       <?rfc include="reference.RFC.2119.xml"?>
+
       <?rfc include="reference.RFC.2784.xml"?>
+
       <?rfc include="reference.RFC.3107.xml"?>
     </references>
 
     <references title="Informative References">
       <?rfc include="reference.I-D.ietf-mpls-seamless-mpls"?>
+
       <?rfc include="reference.I-D.ietf-idr-add-paths"?>
+
       <?rfc include="reference.I-D.ietf-idr-best-external"?>
+
       <?rfc include="reference.I-D.ietf-idr-link-bandwidth"?>
+
       <?rfc include="reference.I-D.ietf-grow-bmp"?>
+
       <?rfc include="reference.I-D.filsfils-spring-segment-routing-central-epe"?>
     </references>
-
   </back>
 </rfc>
